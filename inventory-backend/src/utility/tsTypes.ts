@@ -39,10 +39,11 @@ export interface UserDocument extends Document {
   updatedAt?: Date;
 } 
 
-export interface OTPDocument {
+export interface OTPDocument extends Document {
+  _id: Types.ObjectId;
   email: string;
   otp: string;
-  status?: number
+  status?: number;
   createdAt?: Date;
   expiresAt?: Date;
 }
