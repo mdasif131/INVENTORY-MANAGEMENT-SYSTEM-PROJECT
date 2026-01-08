@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import rateLimit from 'express-rate-limit';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import { connectDB } from './config/database';
 import router from './routes/api'
@@ -19,6 +20,7 @@ connectDB()
 app.use(helmet())
 app.use(hpp());
 app.use(cors())
+app.use(cookieParser());
 
 // Body Parsers Middlewares 
 app.use(express.json({ limit: '50mb' }));
