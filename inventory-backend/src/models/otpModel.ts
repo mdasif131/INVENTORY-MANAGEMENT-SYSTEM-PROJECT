@@ -11,5 +11,5 @@ const dataSchema = new Schema<OTPDocument>(
   { timestamps: true, versionKey: false }
 );
 
-const UserModel = model<OTPDocument>('User', dataSchema);
-export default UserModel;
+const OTPModel = model<OTPDocument>('otp', dataSchema);
+export default OTPModel;

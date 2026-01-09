@@ -2,7 +2,7 @@ import type { Request } from 'express';
 import type { Model } from 'mongoose';
 import { OTPDocument, ServiceResponse2, UserDocument } from '../../utility/tsTypes';
 
-export const recoverVerifyEmailService = async (Requested: Request, otpModel: Model<OTPDocument>, userModel: Model<UserDocument>): Promise<ServiceResponse2> => {
+export const recoverResetPassService = async (Requested: Request, otpModel: Model<OTPDocument>, userModel: Model<UserDocument>): Promise<ServiceResponse2> => {
   const { email, otp, password } = Requested.body; 
   let updateStatus = 1;
   try {

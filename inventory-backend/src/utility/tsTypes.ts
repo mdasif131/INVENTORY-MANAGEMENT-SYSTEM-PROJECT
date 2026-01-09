@@ -1,5 +1,5 @@
 import { Document, Types } from 'mongoose';
-
+import type { Request } from 'express';
 // In utility/tsTypes.ts
 export interface ServiceResponse<T> {
   status: 'success' | 'fail';
@@ -41,9 +41,19 @@ export interface UserDocument extends Document {
 
 export interface OTPDocument extends Document {
   _id: Types.ObjectId;
-  email: string;
+  email?: string;
   otp: string;
   status?: number;
   createdAt?: Date;
   expiresAt?: Date;
+} 
+
+export interface AuthRequest extends Request {
+  user?: {
+    email?: string;
+  };
+} 
+export interface LoginBody {
+  email: string;
+  password: string;
 }
