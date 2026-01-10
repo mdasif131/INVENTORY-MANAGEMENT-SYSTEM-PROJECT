@@ -63,6 +63,12 @@ export interface SupORCusDocument extends Document {
   email: string;
   createdAt?: Date;
   updatedAt?: Date;
+} 
+export interface ExpenseDocument extends Document {
+  userEmail: string;
+  typeID: Types.ObjectId;
+  amount: number;
+  note: string;
 }
 
 export interface AuthRequest extends Request {
