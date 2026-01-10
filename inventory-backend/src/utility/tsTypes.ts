@@ -69,6 +69,18 @@ export interface ExpenseDocument extends Document {
   typeID: Types.ObjectId;
   amount: number;
   note: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+export interface ProductDocument extends Document {
+  userEmail: string;
+  categoryID: Types.ObjectId;
+  brandID: Types.ObjectId;
+  name: string;
+  unit: string;
+  details: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface AuthRequest extends Request {

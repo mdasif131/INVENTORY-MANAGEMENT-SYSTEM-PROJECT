@@ -1,0 +1,31 @@
+import type { Request, Response } from 'express';
+import ProductModel from '../../models/Products/productsModel';
+import { createService } from '../../services/common/createService';
+import { updateService } from '../../services/common/updateService';
+import { AuthRequest } from '../../utility/tsTypes';
+import { listTwoJoinService } from '../../services/common/listTwoJoinService';
+
+export const createProduct = async (req: Request, res: Response) => {
+  const result = await createService(req as AuthRequest, ProductModel);
+  return res.status(201).json(result);
+};
+export const updateProduct = async (req: Request, res: Response) => {
+  const result = await updateService(req as AuthRequest, ProductModel);
+  return res.status(200).json(result);
+};
+
+export const productList = async (req: Request, res: Response) => {
+const SearchRgx = { $regex: req.params.searchKeyword, $options: 'i' };
+const SearchArray = [{ name: SearchRgx },{unit:SearchRgx},{"categories.name": SearchRgx}, {"brands.name" : SearchRgx}];
+const JoinStage1 ={$lookup: {from:"categories", localField:"categoryID", foreignField: "_id", as: "categories"}}
+const JoinStage2 ={$lookup: {from:"brands", localField:"brandID", foreignField: "_id", as: "brands"}}
+const result = await listTwoJoinService(
+    req as AuthRequest,
+    ProductModel,
+    SearchArray,
+    JoinStage1,
+    JoinStage2
+  );
+
+  return res.status(200).json(result);
+};
