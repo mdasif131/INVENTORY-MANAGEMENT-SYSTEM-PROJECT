@@ -4,7 +4,7 @@ import { AuthRequest, ServiceResponse } from '../../utility/tsTypes';
 export const dropDownService = async <T extends Document>(
   Requested: AuthRequest,
   DataModel: Model<T>,
-  Projection: any
+  Projection: Record<string, 0 | 1>
 ): Promise<ServiceResponse<T[]>> => {
   try {
     let userEmail = Requested.user?.email;

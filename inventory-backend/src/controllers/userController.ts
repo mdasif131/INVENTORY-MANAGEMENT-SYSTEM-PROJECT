@@ -5,10 +5,13 @@ import { userUpdateService } from '../services/user/userUpdateService';
 import { userDetailsService } from '../services/user/userDetailsService';
 import { AuthRequest } from '../utility/tsTypes';
 import { recoverResetPassService } from '../services/user/userResetPassService';
-import UserModel from '../models/userModel';
-import OTPModel from '../models/otpModel';
+
 import { userVerifyOtpService } from '../services/user/userVerifyOtpService';
 import { recoverVerifyEmailService } from '../services/user/userVerifyEmailService';
+
+import OTPModel from '../models/Users/otpModel';
+import UserModel from '../models/Users/userModel';
+
 
 
 export const registration = async (req: Request, res: Response) => {

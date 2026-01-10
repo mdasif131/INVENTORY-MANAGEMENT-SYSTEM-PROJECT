@@ -10,10 +10,9 @@ export interface ServiceResponse<T> {
 }
 export interface ServiceResponse2 {
   status: 'success' | 'fail';
-  data?: unknown| null;
+  data?: unknown | null;
   message?: string;
   error?: any;
-
 }
 // Extend Express Request to include user property
 declare global {
@@ -37,7 +36,7 @@ export interface UserDocument extends Document {
   photo?: string;
   createdAt?: Date;
   updatedAt?: Date;
-} 
+}
 
 export interface OTPDocument extends Document {
   _id: Types.ObjectId;
@@ -46,13 +45,20 @@ export interface OTPDocument extends Document {
   status?: number;
   createdAt?: Date;
   expiresAt?: Date;
-} 
+}
+export interface BrandDocument extends Document {
+  _id: Types.ObjectId;
+  userEmail: string;
+  name: string;
+  createdAt?: Date;
+  expiresAt?: Date;
+}
 
 export interface AuthRequest extends Request {
   user?: {
     email?: string;
   };
-} 
+}
 export interface LoginBody {
   email: string;
   password: string;

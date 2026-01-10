@@ -7,6 +7,7 @@ type PaginatedResult<T> = {
   Total: { count: number }[];
   Rows: T[];
 };
+
 export const listService = async <T extends Document>(
   Requested: AuthRequest,
   DataModel: Model<T>,

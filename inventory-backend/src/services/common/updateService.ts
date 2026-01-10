@@ -1,5 +1,4 @@
-import type { Request } from 'express';
-import type { Model, Document } from 'mongoose'; 
+import type { Document, Model } from 'mongoose';
 import { AuthRequest, ServiceResponse } from '../../utility/tsTypes';
 
 export const updateService = async <T extends Document>(Requested: AuthRequest,DataModel: Model<T>): Promise<ServiceResponse<T>> => {

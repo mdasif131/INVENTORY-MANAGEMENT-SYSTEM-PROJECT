@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
-import UserModel from '../models/userModel';
+import UserModel from '../models/Users/userModel';
 
 // Define the shape of JWT payload
 interface DecodedToken extends JwtPayload {
