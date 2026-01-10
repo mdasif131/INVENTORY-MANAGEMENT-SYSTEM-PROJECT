@@ -44,14 +44,25 @@ export interface OTPDocument extends Document {
   otp: string;
   status?: number;
   createdAt?: Date;
-  expiresAt?: Date;
+  updatedAt?: Date;
 }
 export interface BrandDocument extends Document {
   _id: Types.ObjectId;
   userEmail: string;
   name: string;
   createdAt?: Date;
-  expiresAt?: Date;
+  updatedAt?: Date;
+}
+export interface SupORCusDocument extends Document {
+  _id: Types.ObjectId;
+  userEmail: string;
+  name?: string;
+  customerName?:string
+  address: string;
+  phone: string;
+  email: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface AuthRequest extends Request {

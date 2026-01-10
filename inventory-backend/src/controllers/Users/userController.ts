@@ -1,16 +1,16 @@
 import type { Request, Response } from 'express';
-import { userCreateService } from '../services/user/userCreateService';
-import { userLoginService } from '../services/user/userLoginService';
-import { userUpdateService } from '../services/user/userUpdateService';
-import { userDetailsService } from '../services/user/userDetailsService';
-import { AuthRequest } from '../utility/tsTypes';
-import { recoverResetPassService } from '../services/user/userResetPassService';
+import UserModel from '../../models/Users/userModel';
+import OTPModel from '../../models/Users/otpModel';
+import { userCreateService } from '../../services/user/userCreateService';
+import { userLoginService } from '../../services/user/userLoginService';
+import { userUpdateService } from '../../services/user/userUpdateService';
+import { AuthRequest } from '../../utility/tsTypes';
+import { userDetailsService } from '../../services/user/userDetailsService';
+import { recoverVerifyEmailService } from '../../services/user/userVerifyEmailService';
+import { userVerifyOtpService } from '../../services/user/userVerifyOtpService';
+import { recoverResetPassService } from '../../services/user/userResetPassService';
 
-import { userVerifyOtpService } from '../services/user/userVerifyOtpService';
-import { recoverVerifyEmailService } from '../services/user/userVerifyEmailService';
 
-import OTPModel from '../models/Users/otpModel';
-import UserModel from '../models/Users/userModel';
 
 
 

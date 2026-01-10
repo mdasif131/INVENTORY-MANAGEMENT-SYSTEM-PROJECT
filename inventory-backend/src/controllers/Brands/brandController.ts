@@ -1,10 +1,11 @@
 import type { Request, Response } from 'express';
-import BrandModel from "../models/Brands/brandModel";
-import { createService } from '../services/common/createService';
-import { updateService } from '../services/common/updateService';
-import { AuthRequest } from '../utility/tsTypes';
-import { dropDownService } from '../services/common/dropDownService';
-import { listService } from '../services/common/listService';
+import { createService } from '../../services/common/createService';
+import BrandModel from '../../models/Brands/brandModel';
+import { AuthRequest } from '../../utility/tsTypes';
+import { updateService } from '../../services/common/updateService';
+import { listService } from '../../services/common/listService';
+import { dropDownService } from '../../services/common/dropDownService';
+
 
 export const createBrand = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, BrandModel);
