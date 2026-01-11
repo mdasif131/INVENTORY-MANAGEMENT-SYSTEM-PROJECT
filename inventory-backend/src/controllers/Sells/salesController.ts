@@ -4,6 +4,7 @@ import SellSummaryModel from '../../models/Sell/sellSummaryModel';
 import { createParentChildsService } from '../../services/common/createParentChildService';
 import { listOneJoinService } from '../../services/common/listOneJoinService';
 import { AuthRequest } from '../../utility/tsTypes';
+import { deleteParentChildService } from '../../services/common/deleteParentChildService';
 
 export const createSales = async (
   req: Request,
@@ -44,3 +45,8 @@ export const SalesList = async (req: Request, res: Response) => {
 
   return res.status(200).json(result);
 };
+
+export const salesDelete = async (req: Request, res: Response) => {
+  let result = deleteParentChildService(req as AuthRequest, SellSummaryModel, SellProductModel, 'sellID');
+  return res.status(200).json(result);
+}

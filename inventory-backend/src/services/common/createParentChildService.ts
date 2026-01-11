@@ -1,11 +1,10 @@
-
 import type { Document, Model } from 'mongoose';
 import mongoose from 'mongoose';
 import { AuthRequest, ServiceResponse } from '../../utility/tsTypes';
 
 // Service function with corrected types - supports different Parent and Child types
 export const createParentChildsService = async <
-  TParent extends Document ,
+  TParent extends Document,
   TChild extends Document
 >(
   Requested: AuthRequest,
@@ -51,5 +50,3 @@ export const createParentChildsService = async <
     return { status: 'fail', message: 'Internal Server Error', error };
   }
 };
-
-

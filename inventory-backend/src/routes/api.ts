@@ -8,9 +8,9 @@ import { createSupplier, supplierDropDown, supplierList, updateSupplier } from '
 import { createExpensetypes, ExpensetypesDropDown, expensetypesList, updateExpensetypes } from '../controllers/Expenses/expensesTypeController';
 import { createExpense, expensesList, updateExpense } from '../controllers/Expenses/expensesController';
 import { createProduct, productList, updateProduct } from '../controllers/Products/productsController';
-import { createPurchases, purchasesList } from '../controllers/Purchases/purchasesController';
-import { createSales, SalesList } from '../controllers/Sells/salesController';
-import { createReturn, returnList } from '../controllers/Returns/returnsControllers';
+import { createPurchases, purchaseDelete, purchasesList } from '../controllers/Purchases/purchasesController';
+import { createSales, salesDelete, SalesList } from '../controllers/Sells/salesController';
+import { createReturn, returnDelete, returnList } from '../controllers/Returns/returnsControllers';
 const router = exress.Router(); 
 
 // User Routes 
@@ -67,14 +67,17 @@ router.get("/product-list/:pageNo/:perPage/:searchKeyword", authenticate, produc
 // Purchases
 router.post('/create-purchases', authenticate, createPurchases);
 router.get("/purchases-list/:pageNo/:perPage/:searchKeyword", authenticate, purchasesList)
+router.delete('/delete-purchases/:id', authenticate, purchaseDelete);
 
 // Sales
 router.post('/create-sales', authenticate, createSales);
 router.get("/sales-list/:pageNo/:perPage/:searchKeyword", authenticate, SalesList)
+router.delete('/delete-sales/:id', authenticate, salesDelete);
 
 // Return
 router.post('/create-return', authenticate, createReturn);
 router.get("/return-list/:pageNo/:perPage/:searchKeyword", authenticate, returnList)
+router.delete('/delete-return/:id', authenticate, returnDelete);
 
 
 export default router;
