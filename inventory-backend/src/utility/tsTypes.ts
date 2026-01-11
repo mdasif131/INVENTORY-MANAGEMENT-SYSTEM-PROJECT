@@ -4,6 +4,8 @@ import type { Request } from 'express';
 export interface ServiceResponse<T> {
   status: 'success' | 'fail';
   data?: T | T[] | null;
+  parent?: T | T[] | null;
+  childs?: T | T[] | null;
   message?: string;
   error?: any;
   token?: string;
@@ -79,6 +81,28 @@ export interface ProductDocument extends Document {
   name: string;
   unit: string;
   details: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+export interface PurchaseSummaryDocs extends Document {
+  userEmail: string;
+  supplierID: Types.ObjectId;
+  vatTax: number;
+  discount: number;
+  otherCost: number;
+  shippingCost: number;
+  grandTotal: number;
+  note: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+export interface PurchaseDocs extends Document {
+  userEmail: string;
+  purchaseID: Types.ObjectId;
+  productID: Types.ObjectId;
+  qty: number;
+  unitCost: number;
+  total: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
