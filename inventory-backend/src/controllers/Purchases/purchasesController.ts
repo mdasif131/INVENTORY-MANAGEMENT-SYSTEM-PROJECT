@@ -5,16 +5,8 @@ import PurchaseProductModel from '../../models/Purchases/purchaseProductsModel';
 import PurchaseModel from '../../models/Purchases/purchasesModel'; // Use proper name
 import { listOneJoinService } from '../../services/common/listOneJoinService';
 
-export const createPurchases = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  const result = await createParentChildsService(
-    req as AuthRequest,
-    PurchaseModel,
-    PurchaseProductModel,
-    'purchaseID'
-  );
+export const createPurchases = async (req: Request,res: Response): Promise<Response> => {
+  const result = await createParentChildsService(req as AuthRequest,PurchaseModel,PurchaseProductModel,'purchaseID');
   return res.status(201).json(result);
 };
 

@@ -9,6 +9,8 @@ import { createExpensetypes, ExpensetypesDropDown, expensetypesList, updateExpen
 import { createExpense, expensesList, updateExpense } from '../controllers/Expenses/expensesController';
 import { createProduct, productList, updateProduct } from '../controllers/Products/productsController';
 import { createPurchases, purchasesList } from '../controllers/Purchases/purchasesController';
+import { createSales, SalesList } from '../controllers/Sells/salesController';
+import { createReturn, returnList } from '../controllers/Returns/returnsControllers';
 const router = exress.Router(); 
 
 // User Routes 
@@ -65,6 +67,14 @@ router.get("/product-list/:pageNo/:perPage/:searchKeyword", authenticate, produc
 // Purchases
 router.post('/create-purchases', authenticate, createPurchases);
 router.get("/purchases-list/:pageNo/:perPage/:searchKeyword", authenticate, purchasesList)
+
+// Sales
+router.post('/create-sales', authenticate, createSales);
+router.get("/sales-list/:pageNo/:perPage/:searchKeyword", authenticate, SalesList)
+
+// Return
+router.post('/create-return', authenticate, createReturn);
+router.get("/return-list/:pageNo/:perPage/:searchKeyword", authenticate, returnList)
 
 
 export default router;

@@ -107,6 +107,31 @@ export interface PurchaseDocs extends Document {
   updatedAt?: Date;
 }
 
+export interface SellSummaryDocs extends Document {
+  userEmail: string;
+  customerID: Types.ObjectId;
+  vatTax: number;
+  discount: number;
+  otherCost: number;
+  shippingCost: number;
+  grandTotal: number;
+  note: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+export interface SellProductDocs extends Document {
+  userEmail: string;
+  sellID?: Types.ObjectId;
+  returnID?: Types.ObjectId;
+  productID: Types.ObjectId;
+  qty: number;
+  unitCost: number;
+  total: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+
 export interface AuthRequest extends Request {
   user?: {
     email?: string;
