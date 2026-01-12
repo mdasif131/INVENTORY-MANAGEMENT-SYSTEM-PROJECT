@@ -4,6 +4,7 @@ import { createService } from '../../services/common/createService';
 import { updateService } from '../../services/common/updateService';
 import { AuthRequest } from '../../utility/tsTypes';
 import { listOneJoinService } from '../../services/common/listOneJoinService';
+import { deleteService } from '../../services/common/deleteService';
 
 export const createExpense = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, ExpensesModel);
@@ -25,5 +26,11 @@ const JoinStage ={$lookup: {from:"expensetypes", localField:"typeID", foreignFie
     JoinStage
   );
 
+  return res.status(200).json(result);
+}; 
+
+
+export const deleteExpense = async (req: Request, res: Response) => {
+  const result = await deleteService(req as AuthRequest, ExpensesModel);
   return res.status(200).json(result);
 };

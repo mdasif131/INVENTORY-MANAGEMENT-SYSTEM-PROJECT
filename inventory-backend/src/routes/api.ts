@@ -6,7 +6,7 @@ import { categoryDropDown, categoryList, createCategory, updateCategory } from '
 import { createCustomer, customerDropDown, CustomerList, updateCustomer } from '../controllers/Customers/customersController';
 import { createSupplier, supplierDropDown, supplierList, updateSupplier } from '../controllers/Suppliers/suppliersController';
 import { createExpensetypes, ExpensetypesDropDown, expensetypesList, updateExpensetypes } from '../controllers/Expenses/expensesTypeController';
-import { createExpense, expensesList, updateExpense } from '../controllers/Expenses/expensesController';
+import { createExpense, deleteExpense, expensesList, updateExpense } from '../controllers/Expenses/expensesController';
 import { createProduct, productList, updateProduct } from '../controllers/Products/productsController';
 import { createPurchases, purchaseDelete, purchasesList } from '../controllers/Purchases/purchasesController';
 import { createSales, salesDelete, SalesList } from '../controllers/Sells/salesController';
@@ -57,6 +57,7 @@ router.get('/expensetypesDropDown', authenticate, ExpensetypesDropDown);
 router.post('/create-expenses', authenticate, createExpense);
 router.put('/update-expenses/:id', authenticate, updateExpense);
 router.get("/expenses-list/:pageNo/:perPage/:searchKeyword", authenticate, expensesList)
+router.delete('/delete-expense/:id', authenticate, deleteExpense);
 
 
 // Products
