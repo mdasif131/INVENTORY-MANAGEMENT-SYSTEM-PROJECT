@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { UserDocument } from '../../utility/tsTypes';
+import { UserDocument } from '../../types/tsTypes';
 const { Schema, model } = mongoose;
 
 const dataSchema = new Schema<UserDocument>(
@@ -9,7 +9,7 @@ const dataSchema = new Schema<UserDocument>(
     lastName: { type: String },
     mobile: { type: String },
     password: { type: String, required: true },
-    photo: { type: String }
+    photo: { type: String },
   },
   { timestamps: true, versionKey: false }
 );

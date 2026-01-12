@@ -1,5 +1,5 @@
 import type { Document, Model } from 'mongoose';
-import { AuthRequest, ServiceResponse } from '../../utility/tsTypes';
+import { AuthRequest, ServiceResponse } from '../../types/tsTypes';
 
 export const dropDownService = async <T extends Document>(
   Requested: AuthRequest,

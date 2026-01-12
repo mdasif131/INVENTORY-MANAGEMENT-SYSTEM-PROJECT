@@ -2,7 +2,7 @@ import type { Request } from 'express';
 import type { Model, Document } from 'mongoose';
 
 // Generic response type
-import { AuthRequest, ServiceResponse } from '../../utility/tsTypes';
+import { AuthRequest, ServiceResponse } from '../../types/tsTypes';
 
 export const userDetailsService = async <T extends Document>(
   Requested: AuthRequest,

@@ -1,6 +1,6 @@
 import type { Request } from 'express';
 import type { Model } from 'mongoose';
-import { OTPDocument, ServiceResponse2 } from '../../utility/tsTypes';
+import { OTPDocument, ServiceResponse2 } from '../../types/tsTypes';
 export const userVerifyOtpService = async (
   Requested: Request,
   otpModel: Model<OTPDocument>

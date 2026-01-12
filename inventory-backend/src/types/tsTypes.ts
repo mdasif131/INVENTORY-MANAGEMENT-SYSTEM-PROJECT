@@ -134,7 +134,9 @@ export interface SellProductDocs extends Document {
 
 export interface AuthRequest extends Request {
   user?: {
-    email?: string;
+    [key: string]: any;
+    email: string; 
+    id?: string;
   };
 }
 export interface LoginBody {

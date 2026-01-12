@@ -2,8 +2,11 @@ import type { Request } from 'express';
 import type { Model } from 'mongoose';
 import { getOTPEmailTemplate } from '../../utility/getOTPEmailTemplate';
 import { sendEmailUtility } from '../../utility/sendEmailUtility';
-import { OTPDocument, ServiceResponse2, UserDocument } from '../../utility/tsTypes';
-
+import {
+  OTPDocument,
+  ServiceResponse2,
+  UserDocument,
+} from '../../types/tsTypes';
 
 export const recoverVerifyEmailService = async (
   Requested: Request<{ email: string }>,

@@ -1,6 +1,6 @@
 import type { Document, Model } from 'mongoose';
 import mongoose from 'mongoose';
-import { AuthRequest, ServiceResponse } from '../../utility/tsTypes';
+import { AuthRequest, ServiceResponse } from '../../types/tsTypes';
 
 // Service function with corrected types - supports different Parent and Child types
 export const createParentChildsService = async <

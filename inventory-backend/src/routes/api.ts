@@ -11,6 +11,7 @@ import { createProduct, deleteProduct, productList, updateProduct } from '../con
 import { createPurchases, purchaseDelete, purchasesList } from '../controllers/Purchases/purchasesController';
 import { createSales, salesDelete, SalesList } from '../controllers/Sells/salesController';
 import { createReturn, returnDelete, returnList } from '../controllers/Returns/returnsControllers';
+import { expenseReportService } from '../services/report/expenseReportService';
 const router = exress.Router(); 
 
 // User Routes 
@@ -85,6 +86,9 @@ router.delete('/delete-sales/:id', authenticate, salesDelete);
 router.post('/create-return', authenticate, createReturn);
 router.get("/return-list/:pageNo/:perPage/:searchKeyword", authenticate, returnList)
 router.delete('/delete-return/:id', authenticate, returnDelete);
+
+// Report
+router.post('/expenses-by-date', authenticate, expenseReportService)
 
 
 export default router;

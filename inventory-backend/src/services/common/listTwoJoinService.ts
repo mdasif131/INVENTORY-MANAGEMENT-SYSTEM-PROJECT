@@ -1,5 +1,5 @@
 import type { Document, Model, PipelineStage } from 'mongoose';
-import { AuthRequest, ServiceResponse } from '../../utility/tsTypes';
+import { AuthRequest, ServiceResponse } from '../../types/tsTypes';
 
 type PaginatedResult<T> = {
   Total: { count: number }[];

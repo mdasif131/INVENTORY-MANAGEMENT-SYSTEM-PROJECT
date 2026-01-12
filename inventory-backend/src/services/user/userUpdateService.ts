@@ -1,13 +1,12 @@
 import type { Request } from 'express';
 import type { Model, Document } from 'mongoose';
-import { ServiceResponse } from '../../utility/tsTypes';
+import { ServiceResponse } from '../../types/tsTypes';
 
 interface AuthRequest extends Request {
   user?: {
     email?: string;
   };
 }
-
 
 export const userUpdateService = async <T extends Document>(
   Requested: AuthRequest,

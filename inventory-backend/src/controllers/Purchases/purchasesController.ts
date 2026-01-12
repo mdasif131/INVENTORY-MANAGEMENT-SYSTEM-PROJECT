@@ -1,13 +1,21 @@
 import type { Request, Response } from 'express';
 import { createParentChildsService } from '../../services/common/createParentChildService';
-import { AuthRequest } from '../../utility/tsTypes';
+import { AuthRequest } from '../../types/tsTypes';
 import PurchaseProductModel from '../../models/Purchases/purchaseProductsModel';
 import PurchaseModel from '../../models/Purchases/purchasesModel'; // Use proper name
 import { listOneJoinService } from '../../services/common/listOneJoinService';
 import { deleteParentChildService } from '../../services/common/deleteParentChildService';
 
-export const createPurchases = async (req: Request,res: Response): Promise<Response> => {
-  const result = await createParentChildsService(req as AuthRequest,PurchaseModel,PurchaseProductModel,'purchaseID');
+export const createPurchases = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const result = await createParentChildsService(
+    req as AuthRequest,
+    PurchaseModel,
+    PurchaseProductModel,
+    'purchaseID'
+  );
   return res.status(201).json(result);
 };
 
@@ -39,6 +47,11 @@ export const purchasesList = async (req: Request, res: Response) => {
 };
 
 export const purchaseDelete = async (req: Request, res: Response) => {
-  let result = deleteParentChildService(req as AuthRequest, PurchaseModel, PurchaseProductModel, 'purchaseID');
+  let result = deleteParentChildService(
+    req as AuthRequest,
+    PurchaseModel,
+    PurchaseProductModel,
+    'purchaseID'
+  );
   return res.status(200).json(result);
-}
+};

@@ -3,10 +3,10 @@ import ReturnProductModel from '../../models/Returns/returnProduct';
 import ReturnSummaryModel from '../../models/Returns/returnSummary';
 import { createParentChildsService } from '../../services/common/createParentChildService';
 import { listOneJoinService } from '../../services/common/listOneJoinService';
-import { AuthRequest } from '../../utility/tsTypes';
+import { AuthRequest } from '../../types/tsTypes';
 import { deleteParentChildService } from '../../services/common/deleteParentChildService';
 
-export const createReturn= async (
+export const createReturn = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
@@ -46,6 +46,11 @@ export const returnList = async (req: Request, res: Response) => {
   return res.status(200).json(result);
 };
 export const returnDelete = async (req: Request, res: Response) => {
-  let result = deleteParentChildService(req as AuthRequest, ReturnSummaryModel, ReturnProductModel, 'returnID');
+  let result = deleteParentChildService(
+    req as AuthRequest,
+    ReturnSummaryModel,
+    ReturnProductModel,
+    'returnID'
+  );
   return res.status(200).json(result);
-}
+};

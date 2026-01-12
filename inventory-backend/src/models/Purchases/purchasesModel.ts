@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { PurchaseSummaryDocs } from '../../utility/tsTypes';
+import { PurchaseSummaryDocs } from '../../types/tsTypes';
 const { Schema, model } = mongoose;
 
 const dataSchema = new Schema<PurchaseSummaryDocs>(
@@ -15,7 +15,6 @@ const dataSchema = new Schema<PurchaseSummaryDocs>(
   },
   { timestamps: true, versionKey: false }
 );
-
 
 const PurchaseModel = model<PurchaseSummaryDocs>('purchase', dataSchema);
 export default PurchaseModel;

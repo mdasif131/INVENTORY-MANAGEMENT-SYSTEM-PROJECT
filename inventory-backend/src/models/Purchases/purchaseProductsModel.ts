@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { PurchaseDocs } from '../../utility/tsTypes';
+import { PurchaseDocs } from '../../types/tsTypes';
 const { Schema, model } = mongoose;
 
 const dataSchema = new Schema<PurchaseDocs>(
@@ -8,8 +8,8 @@ const dataSchema = new Schema<PurchaseDocs>(
     purchaseID: { type: Schema.Types.ObjectId },
     productID: { type: Schema.Types.ObjectId },
     qty: { type: Number },
-    unitCost: {type:Number},
-    total: {type:Number},
+    unitCost: { type: Number },
+    total: { type: Number },
   },
   { timestamps: true, versionKey: false }
 );

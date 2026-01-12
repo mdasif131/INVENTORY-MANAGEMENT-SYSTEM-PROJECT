@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { OTPDocument } from '../../utility/tsTypes';
+import { OTPDocument } from '../../types/tsTypes';
 const { Schema, model } = mongoose;
 
 const dataSchema = new Schema<OTPDocument>(

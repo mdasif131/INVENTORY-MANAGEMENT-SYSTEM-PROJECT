@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { BrandDocument } from '../../utility/tsTypes';
+import { BrandDocument } from '../../types/tsTypes';
 const { Schema, model } = mongoose;
 
 const dataSchema = new Schema<BrandDocument>(

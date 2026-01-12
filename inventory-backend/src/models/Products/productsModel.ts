@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ProductDocument } from '../../utility/tsTypes';
+import { ProductDocument } from '../../types/tsTypes';
 const { Schema, model } = mongoose;
 
 const dataSchema = new Schema<ProductDocument>(
@@ -7,9 +7,9 @@ const dataSchema = new Schema<ProductDocument>(
     userEmail: { type: String },
     categoryID: { type: Schema.Types.ObjectId },
     brandID: { type: Schema.Types.ObjectId },
-    name: { type: String},
-    unit: { type: String},
-    details: { type: String},
+    name: { type: String },
+    unit: { type: String },
+    details: { type: String },
   },
   { timestamps: true, versionKey: false }
 );

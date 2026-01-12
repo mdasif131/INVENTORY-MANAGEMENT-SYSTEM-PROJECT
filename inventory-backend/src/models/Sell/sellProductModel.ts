@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { SellProductDocs } from '../../utility/tsTypes';
+import { SellProductDocs } from '../../types/tsTypes';
 const { Schema, model } = mongoose;
 
 const dataSchema = new Schema<SellProductDocs>(

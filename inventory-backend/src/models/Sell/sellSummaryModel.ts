@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { SellSummaryDocs } from '../../utility/tsTypes';
+import { SellSummaryDocs } from '../../types/tsTypes';
 const { Schema, model } = mongoose;
 
 const dataSchema = new Schema<SellSummaryDocs>(
@@ -15,7 +15,6 @@ const dataSchema = new Schema<SellSummaryDocs>(
   },
   { timestamps: true, versionKey: false }
 );
-
 
 const SellSummaryModel = model<SellSummaryDocs>('sellsummary', dataSchema);
 export default SellSummaryModel;

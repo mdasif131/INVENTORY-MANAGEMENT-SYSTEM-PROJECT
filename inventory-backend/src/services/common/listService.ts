@@ -1,7 +1,5 @@
 import type { Document, Model } from 'mongoose';
-import { AuthRequest, ServiceResponse } from '../../utility/tsTypes';
-
-
+import { AuthRequest, ServiceResponse } from '../../types/tsTypes';
 
 type PaginatedResult<T> = {
   Total: { count: number }[];
@@ -49,4 +47,4 @@ export const listService = async <T extends Document>(
   } catch (error) {
     return { status: 'fail', message: 'Internal Server Error', error };
   }
-}; 
+};

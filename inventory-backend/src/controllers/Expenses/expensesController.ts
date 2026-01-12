@@ -2,7 +2,7 @@ import type { Request, Response } from 'express';
 import ExpensesModel from '../../models/Expenses/expensesModel';
 import { createService } from '../../services/common/createService';
 import { updateService } from '../../services/common/updateService';
-import { AuthRequest } from '../../utility/tsTypes';
+import { AuthRequest } from '../../types/tsTypes';
 import { listOneJoinService } from '../../services/common/listOneJoinService';
 import { deleteService } from '../../services/common/deleteService';
 
@@ -17,8 +17,19 @@ export const updateExpense = async (req: Request, res: Response) => {
 
 export const expensesList = async (req: Request, res: Response) => {
   const SearchRgx = { $regex: req.params.searchKeyword, $options: 'i' };
-  const SearchArray = [{ note: SearchRgx },{amount:SearchRgx},{"type.name": SearchRgx}];
-const JoinStage ={$lookup: {from:"expensetypes", localField:"typeID", foreignField: "_id", as: "type"}}
+  const SearchArray = [
+    { note: SearchRgx },
+    { amount: SearchRgx },
+    { 'type.name': SearchRgx },
+  ];
+  const JoinStage = {
+    $lookup: {
+      from: 'expensetypes',
+      localField: 'typeID',
+      foreignField: '_id',
+      as: 'type',
+    },
+  };
   const result = await listOneJoinService(
     req as AuthRequest,
     ExpensesModel,
@@ -27,8 +38,7 @@ const JoinStage ={$lookup: {from:"expensetypes", localField:"typeID", foreignFie
   );
 
   return res.status(200).json(result);
-}; 
-
+};
 
 export const deleteExpense = async (req: Request, res: Response) => {
   const result = await deleteService(req as AuthRequest, ExpensesModel);

@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
 import { createService } from '../../services/common/createService';
-import { AuthRequest } from '../../utility/tsTypes';
+import { AuthRequest } from '../../types/tsTypes';
 import { updateService } from '../../services/common/updateService';
 import { listService } from '../../services/common/listService';
 import { dropDownService } from '../../services/common/dropDownService';
@@ -10,12 +10,11 @@ import mongoose from 'mongoose';
 import { deleteService } from '../../services/common/deleteService';
 import SellSummaryModel from '../../models/Sell/sellSummaryModel';
 
-
 export const createCustomer = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, CustomerModel);
   return res.status(201).json(result);
 };
-export const updateCustomer= async (req: Request, res: Response) => {
+export const updateCustomer = async (req: Request, res: Response) => {
   const result = await updateService(req as AuthRequest, CustomerModel);
   return res.status(200).json(result);
 };
@@ -44,7 +43,10 @@ export const customerDropDown = async (req: Request, res: Response) => {
   return res.status(200).json(result);
 };
 
-export const deleteCustomer= async (req: Request, res: Response): Promise<void> => {
+export const deleteCustomer = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   const deleteID = req.params.id;
 
   const checkAssociate = await checkAssociateService(
@@ -53,9 +55,11 @@ export const deleteCustomer= async (req: Request, res: Response): Promise<void> 
   );
 
   if (checkAssociate) {
-    res.status(400).json({ status: 'Can not delete', data: 'Associate with Sales', });
+    res
+      .status(400)
+      .json({ status: 'Can not delete', data: 'Associate with Sales' });
   }
 
   const result = await deleteService(req as AuthRequest, CustomerModel);
-  res.status(200).json({ status: 'success', data: result })
-}
+  res.status(200).json({ status: 'success', data: result });
+};
