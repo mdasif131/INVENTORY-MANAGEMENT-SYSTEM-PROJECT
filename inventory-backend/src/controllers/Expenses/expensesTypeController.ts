@@ -5,6 +5,10 @@ import { updateService } from '../../services/common/updateService';
 import { listService } from '../../services/common/listService';
 import { dropDownService } from '../../services/common/dropDownService';
 import ExpenseTypeModel from '../../models/Expenses/expenseTypeModel';
+import { checkAssociateService } from '../../services/common/checkAssociateService';
+import mongoose from 'mongoose';
+import ExpensesModel from '../../models/Expenses/expensesModel';
+import { deleteService } from '../../services/common/deleteService';
 
 export const createExpensetypes = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, ExpenseTypeModel);
@@ -33,3 +37,14 @@ export const ExpensetypesDropDown = async (req: Request, res: Response) => {
   });
   return res.status(200).json(result);
 };
+export const deleteExpenseType= async (req: Request, res: Response): Promise<void> => {
+  const deleteID = req.params.id;
+  const checkAssociate = await checkAssociateService({ supplierID: new mongoose.Types.ObjectId(deleteID)},ExpensesModel);
+
+  if (checkAssociate) {
+    res.status(400).json({ status: 'Can not delete', data: 'Associate with Expenses', });
+  }
+
+  const result = await deleteService(req as AuthRequest, ExpenseTypeModel);
+  res.status(200).json({ status: 'success', data: result })
+}

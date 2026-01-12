@@ -5,6 +5,10 @@ import { updateService } from '../../services/common/updateService';
 import { listService } from '../../services/common/listService';
 import { dropDownService } from '../../services/common/dropDownService';
 import CategoriesModel from '../../models/Categories/categoriesModel';
+import { checkAssociateService } from '../../services/common/checkAssociateService';
+import ProductModel from '../../models/Products/productsModel';
+import mongoose from 'mongoose';
+import { deleteService } from '../../services/common/deleteService';
 
 
 export const createCategory = async (req: Request, res: Response) => {
@@ -29,4 +33,20 @@ export const categoryDropDown = async (req: Request, res: Response) => {
     name: 1,
   });
   return res.status(200).json(result);
-};
+}; 
+
+export const deleteCategory= async (req: Request, res: Response): Promise<void> => {
+  const deleteID = req.params.id;
+
+  const checkAssociate = await checkAssociateService(
+    { categoryID: new mongoose.Types.ObjectId(deleteID) },
+    ProductModel
+  );
+
+  if (checkAssociate) {
+    res.status(400).json({ status: 'Can not delete', data: 'Associate with Product', });
+  }
+
+  const result = await deleteService(req as AuthRequest, CategoriesModel);
+  res.status(200).json({ status: 'success', data: result })
+}

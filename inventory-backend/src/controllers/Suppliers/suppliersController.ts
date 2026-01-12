@@ -5,6 +5,10 @@ import { updateService } from '../../services/common/updateService';
 import { listService } from '../../services/common/listService';
 import { dropDownService } from '../../services/common/dropDownService';
 import SupplierModel from '../../models/Suppliers/suppliersModel';
+import { checkAssociateService } from '../../services/common/checkAssociateService';
+import mongoose from 'mongoose';
+import { deleteService } from '../../services/common/deleteService';
+import PurchaseModel from '../../models/Purchases/purchasesModel';
 
 
 export const createSupplier = async (req: Request, res: Response) => {
@@ -39,3 +43,15 @@ export const supplierDropDown = async (req: Request, res: Response) => {
   });
   return res.status(200).json(result);
 };
+
+export const deleteSupplier= async (req: Request, res: Response): Promise<void> => {
+  const deleteID = req.params.id;
+  const checkAssociate = await checkAssociateService({ supplierID: new mongoose.Types.ObjectId(deleteID)},PurchaseModel);
+
+  if (checkAssociate) {
+    res.status(400).json({ status: 'Can not delete', data: 'Associate with Purchase', });
+  }
+
+  const result = await deleteService(req as AuthRequest, SupplierModel);
+  res.status(200).json({ status: 'success', data: result })
+}

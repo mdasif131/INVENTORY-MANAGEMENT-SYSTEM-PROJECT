@@ -4,6 +4,12 @@ import { createService } from '../../services/common/createService';
 import { updateService } from '../../services/common/updateService';
 import { AuthRequest } from '../../utility/tsTypes';
 import { listTwoJoinService } from '../../services/common/listTwoJoinService';
+import mongoose from 'mongoose';
+import { checkAssociateService } from '../../services/common/checkAssociateService';
+import { deleteService } from '../../services/common/deleteService';
+import SellProductModel from '../../models/Sell/sellProductModel';
+import PurchaseProductModel from '../../models/Purchases/purchaseProductsModel';
+import ReturnProductModel from '../../models/Returns/returnProduct';
 
 export const createProduct = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, ProductModel);
@@ -29,3 +35,22 @@ const result = await listTwoJoinService(
 
   return res.status(200).json(result);
 };
+
+export const deleteProduct= async (req: Request, res: Response): Promise<void> => {
+  const deleteID = req.params.id;
+  const checkSalesAssociate = await checkAssociateService({ customerID: new mongoose.Types.ObjectId(deleteID) },SellProductModel);
+  const checkPurchaseAssociate = await checkAssociateService({ customerID: new mongoose.Types.ObjectId(deleteID) },PurchaseProductModel);
+  const checkReturnAssociate = await checkAssociateService({ customerID: new mongoose.Types.ObjectId(deleteID) },ReturnProductModel);
+
+  if (checkSalesAssociate) {
+    res.status(400).json({ status: 'Can not delete', data: 'Associate with Sales'});
+  } else if (checkPurchaseAssociate) {
+     res.status(400).json({ status: 'Can not delete', data: 'Associate with Purchase'});
+  } else if (checkReturnAssociate) {
+    res.status(400).json({ status: 'Can not delete', data: 'Associate with Return'});
+  } else {
+     const result = await deleteService(req as AuthRequest, ProductModel);
+     res.status(200).json({ status: 'success', data: result });
+  }
+   
+}

@@ -5,6 +5,10 @@ import { updateService } from '../../services/common/updateService';
 import { listService } from '../../services/common/listService';
 import { dropDownService } from '../../services/common/dropDownService';
 import CustomerModel from '../../models/Customers/customerModel';
+import { checkAssociateService } from '../../services/common/checkAssociateService';
+import mongoose from 'mongoose';
+import { deleteService } from '../../services/common/deleteService';
+import SellSummaryModel from '../../models/Sell/sellSummaryModel';
 
 
 export const createCustomer = async (req: Request, res: Response) => {
@@ -39,3 +43,19 @@ export const customerDropDown = async (req: Request, res: Response) => {
   });
   return res.status(200).json(result);
 };
+
+export const deleteCustomer= async (req: Request, res: Response): Promise<void> => {
+  const deleteID = req.params.id;
+
+  const checkAssociate = await checkAssociateService(
+    { customerID: new mongoose.Types.ObjectId(deleteID) },
+    SellSummaryModel
+  );
+
+  if (checkAssociate) {
+    res.status(400).json({ status: 'Can not delete', data: 'Associate with Sales', });
+  }
+
+  const result = await deleteService(req as AuthRequest, CustomerModel);
+  res.status(200).json({ status: 'success', data: result })
+}
