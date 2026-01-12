@@ -11,7 +11,7 @@ export const expenseReportService = async (
     const toDate = req.body.toDate as string;
     const joinWithExpensStage = {$lookup: {from: 'expensetypes',localField: 'typeID',foreignField: '_id',as: 'Type',},};
     const unwindExpensStage = { $unwind: '$Type' };
-    const projectionStage = {$project: {'Type._id': 0,'Type.userEmail': 0,'Type.createdAt': 0,'Type.updatedAt': 0,},};
+    const projectionStage = {$project: {'Type._id': 0,'Type.createdAt': 0,'Type.updatedAt': 0,},};
 
     const data = await ExpensesModel.aggregate([
       {
