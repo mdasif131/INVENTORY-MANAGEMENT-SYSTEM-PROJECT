@@ -15,6 +15,10 @@ import { expenseReportService } from '../services/report/expenseReportService';
 import { purchasesReportService } from '../services/report/purchasesReportService';
 import { returnReportService } from '../services/report/returnReportService';
 import { salesReportService } from '../services/report/salesReportService';
+import { expenseSummaryService } from '../services/summary/expenseSummaryService';
+import { purchaseSummaryService } from '../services/summary/purchaseSummaryService';
+import { returnSummaryService } from '../services/summary/returnSummaryService';
+import { salesSummaryService } from '../services/summary/salesSummaryService';
 const router = exress.Router(); 
 
 // User Routes 
@@ -95,6 +99,12 @@ router.post('/expenses-by-date', authenticate, expenseReportService)
 router.post('/purchases-by-date', authenticate, purchasesReportService);
 router.post('/return-by-date', authenticate, returnReportService);
 router.post('/sales-by-date', authenticate, salesReportService);
+
+// Summary
+router.get('/expenses-summary', authenticate, expenseSummaryService)
+router.get('/purchases-summary', authenticate, purchaseSummaryService);
+router.get('/return-summary', authenticate, returnSummaryService);
+router.get('/sales-summary', authenticate, salesSummaryService);
 
 
 export default router;
