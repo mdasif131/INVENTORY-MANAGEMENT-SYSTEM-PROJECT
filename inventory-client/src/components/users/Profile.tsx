@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { X } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store/store';
 import { Input } from '../ui/input';
@@ -105,7 +106,8 @@ const Profile = () => {
   }, []);
   return (
     <section className="w-full">
-      <div className="max-w-7xl mx-auto bg-white px-8 py-10 rounded-xl shadow-2xl">
+      <div className="max-w-7xl mx-auto bg-white px-8 py-10 rounded-xl shadow-2xl relative">
+       <button onClick={()=> navigate('/')} className='absolute right-5 top-4 text-red-400 cursor-pointer'><X  size={25}/></button>
         {/* Profile Image */}
         <div className="flex flex-col items-center mb-8">
           <img

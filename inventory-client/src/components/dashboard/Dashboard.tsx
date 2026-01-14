@@ -1,7 +1,11 @@
-import MasterLoayout from "../masterLayout/MasterLoayout"
 
 const Dashboard = () => {
-  return <MasterLoayout>Dashboard</MasterLoayout>;
+  return (
+    <>
+      <h1>MD ASIF CHY</h1>
+    
+    </>
+  )
 }
 
 export default Dashboard

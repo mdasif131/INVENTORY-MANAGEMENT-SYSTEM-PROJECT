@@ -26,6 +26,7 @@ const App = () => {
           <Route path="/" element={<PrivateRoute />}>
             <Route index element={<DashBoardPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/dashboard" element={<DashBoardPage />} />
           </Route>
 
           {/* Catch-all 404 - MOVED TO THE END */}

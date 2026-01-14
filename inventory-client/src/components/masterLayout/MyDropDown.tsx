@@ -21,7 +21,7 @@ const MyDropDown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center overflow-hidden rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all hover:ring-2 hover:ring-purple-300">
+        <button className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center overflow-hidden rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all hover:ring-2 hover:ring-blue-300">
           <img
             src={userInfo?.photo}
             alt="profile image"
@@ -61,7 +61,7 @@ const MyDropDown = () => {
           <DropdownMenuItem asChild>
             <NavLink
               to="/profile"
-              className="flex items-center gap-3 p-3 rounded-md hover:bg-purple-500/10 hover:border-l-4 hover:border-purple-500 transition-all cursor-pointer text-gray-700 hover:text-purple-600 focus:outline-none focus:bg-purple-500/10"
+              className="flex items-center gap-3 p-3 rounded-md hover:bg-blue-500/10 hover:border-l-4 hover:border-blue-500 transition-all cursor-pointer text-gray-700 hover:text-blue-600 focus:outline-none focus:bg-blue-500/10"
             >
               <UserRound size={18} className="shrink-0" />
               <span className="text-sm sm:text-base font-medium">Profile</span>
@@ -71,7 +71,7 @@ const MyDropDown = () => {
           <DropdownMenuItem asChild>
             <button
               onClick={onLogout}
-              className="w-full flex items-center gap-3 p-3 rounded-md hover:bg-purple-500/10 hover:border-l-4 hover:border-purple-500 transition-all cursor-pointer text-gray-700 hover:text-purple-600 focus:outline-none focus:bg-purple-500/10"
+              className="w-full flex items-center gap-3 p-3 rounded-md hover:bg-blue-500/10 hover:border-l-4 hover:border-blue-500 transition-all cursor-pointer text-gray-700 hover:text-blue-600 focus:outline-none focus:bg-blue-500/10"
             >
               <LogOut size={18} className="shrink-0" />
               <span className="text-sm sm:text-base font-medium">Logout</span>
