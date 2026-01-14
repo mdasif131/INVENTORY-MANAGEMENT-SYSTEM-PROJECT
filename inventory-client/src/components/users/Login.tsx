@@ -26,7 +26,7 @@ const Login = () => {
     } else {
       const result = await LoginRequest(email, password);
       if (result) {
-        // window.location.href = '/';
+        window.location.href = '/';
       }
     }
   };
