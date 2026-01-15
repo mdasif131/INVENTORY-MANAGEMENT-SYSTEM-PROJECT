@@ -1,14 +1,22 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import FullScreenLoader from './components/masterLayout/FullScreenLoader';
-import LoginPage from './pages/LoginPage';
-import RegistrationPage from './pages/RegistrationPage';
+import PrivateRoute from './components/PrivateRoutes';
+import CreatePassword from './components/users/CreatePassword';
 import SendOTP from './components/users/SendOTP';
 import VerifyOTP from './components/users/VerifyOTP';
-import CreatePassword from './components/users/CreatePassword';
+import BrandListPage from './pages/BrandPage/BrandListPage';
+import CategoryListPage from './pages/CategoryPage/CategoryPage';
+import DashBoardPage from './pages/DashboardPage/DashboardPage';
 import Page404 from './pages/Page404';
-import PrivateRoute from './components/PrivateRoutes';
-import ProfilePage from './pages/ProfilePage';
-import DashBoardPage from './pages/DashboardPage';
+import LoginPage from './pages/UserPage/LoginPage';
+import ProfilePage from './pages/UserPage/ProfilePage';
+import RegistrationPage from './pages/UserPage/RegistrationPage';
+import CustomerListPage from './pages/CustomerPage/CustomerListPage';
+import ExpenseListPage from './pages/ExpensesPage/ExpenseListPage';
+import ProductListPage from './pages/ProductPage/ProductListPage';
+import ReturnListPage from './pages/ReturnPage/ReturnListPage';
+import SalesListPage from './pages/SalesPage/SalesListPage';
+import SupplierListPage from './pages/SupplierPage/SupplierListPage';
 const App = () => {
   return (
     <>
@@ -26,7 +34,14 @@ const App = () => {
           <Route path="/" element={<PrivateRoute />}>
             <Route index element={<DashBoardPage />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/dashboard" element={<DashBoardPage />} />
+            <Route path="/brand-list" element={<BrandListPage />} />
+            <Route path="/category-list" element={<CategoryListPage />} />
+            <Route path="/customer-list" element={<CustomerListPage />} />
+            <Route path="/expense-list" element={<ExpenseListPage />} />
+            <Route path="/product-list" element={<ProductListPage />} />
+            <Route path="/return-list" element={<ReturnListPage />} />
+            <Route path="/sales-list" element={<SalesListPage />} />
+            <Route path="/supplier-list" element={<SupplierListPage />} />
           </Route>
 
           {/* Catch-all 404 - MOVED TO THE END */}

@@ -1,8 +1,8 @@
 import { lazy, Suspense } from 'react';
-import LazyLoader from '../components/masterLayout/LazyLoader';
+import LazyLoader from '../../components/masterLayout/LazyLoader';
 
 const Registration = lazy(
-  () => import('../components/users/Registration')
+  () => import('../../components/users/Registration')
 );
 const RegistrationPage = () => {
   return (

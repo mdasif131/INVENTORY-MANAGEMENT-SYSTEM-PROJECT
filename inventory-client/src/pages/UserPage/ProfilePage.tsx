@@ -1,8 +1,9 @@
 import { lazy, Suspense } from 'react';
-import LazyLoader from '../components/masterLayout/LazyLoader';
-import { MainLayout } from '../components/masterLayout/Layout';
+import { MainLayout } from '../../components/masterLayout/Layout';
+import LazyLoader from '../../components/masterLayout/LazyLoader';
+;
 
-const Profile = lazy(() => import('../components/users/Profile'));
+const Profile = lazy(() => import('../../components/users/Profile'));
 const ProfilePage = () => {
   return (
     <>
