@@ -9,6 +9,7 @@ import { checkAssociateService } from '../../services/common/checkAssociateServi
 import mongoose from 'mongoose';
 import { deleteService } from '../../services/common/deleteService';
 import SellSummaryModel from '../../models/Sell/sellSummaryModel';
+import { detailsByIDService } from '../../services/common/detailsByIDService';
 
 export const createCustomer = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, CustomerModel);
@@ -18,6 +19,12 @@ export const updateCustomer = async (req: Request, res: Response) => {
   const result = await updateService(req as AuthRequest, CustomerModel);
   return res.status(200).json(result);
 };
+
+export const customerDetailsById = async (req: Request, res: Response) => {
+  const result = await detailsByIDService(req as AuthRequest, CustomerModel);
+  return res.status(200).json(result);
+};
+
 export const CustomerList = async (req: Request, res: Response) => {
   const SearchRgx = { $regex: req.params.searchKeyword, $options: 'i' };
   const SearchArray = [

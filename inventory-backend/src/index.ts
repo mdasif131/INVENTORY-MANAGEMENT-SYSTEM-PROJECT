@@ -49,7 +49,8 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-const PORT = process.env.PORT || 3000; 
-app.listen(PORT, () => {
-  console.log(`Inventory backend is running on port ${PORT}`);
-});
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => {
+//   console.log(`Inventory backend is running on port ${PORT}`);
+// });
+export default app;

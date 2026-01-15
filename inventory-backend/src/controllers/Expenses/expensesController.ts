@@ -5,6 +5,7 @@ import { updateService } from '../../services/common/updateService';
 import { AuthRequest } from '../../types/tsTypes';
 import { listOneJoinService } from '../../services/common/listOneJoinService';
 import { deleteService } from '../../services/common/deleteService';
+import { detailsByIDService } from '../../services/common/detailsByIDService';
 
 export const createExpense = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, ExpensesModel);
@@ -12,6 +13,11 @@ export const createExpense = async (req: Request, res: Response) => {
 };
 export const updateExpense = async (req: Request, res: Response) => {
   const result = await updateService(req as AuthRequest, ExpensesModel);
+  return res.status(200).json(result);
+};
+
+export const expenseDetailsById = async (req: Request, res: Response) => {
+  const result = await detailsByIDService(req as AuthRequest, ExpensesModel);
   return res.status(200).json(result);
 };
 

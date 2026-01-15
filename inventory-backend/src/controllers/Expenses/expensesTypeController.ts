@@ -9,6 +9,7 @@ import { checkAssociateService } from '../../services/common/checkAssociateServi
 import mongoose from 'mongoose';
 import ExpensesModel from '../../models/Expenses/expensesModel';
 import { deleteService } from '../../services/common/deleteService';
+import { detailsByIDService } from '../../services/common/detailsByIDService';
 
 export const createExpensetypes = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, ExpenseTypeModel);
@@ -18,6 +19,12 @@ export const updateExpensetypes = async (req: Request, res: Response) => {
   const result = await updateService(req as AuthRequest, ExpenseTypeModel);
   return res.status(200).json(result);
 };
+
+export const expenseTypeDetailsById = async (req: Request, res: Response) => {
+  const result = await detailsByIDService(req as AuthRequest, ExpenseTypeModel);
+  return res.status(200).json(result);
+};
+
 export const expensetypesList = async (req: Request, res: Response) => {
   const SearchRgx = { $regex: req.params.searchKeyword, $options: 'i' };
   const SearchArray = [{ name: SearchRgx }];

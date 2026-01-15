@@ -10,6 +10,7 @@ import { deleteService } from '../../services/common/deleteService';
 import SellProductModel from '../../models/Sell/sellProductModel';
 import PurchaseProductModel from '../../models/Purchases/purchaseProductsModel';
 import ReturnProductModel from '../../models/Returns/returnProduct';
+import { detailsByIDService } from '../../services/common/detailsByIDService';
 
 export const createProduct = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, ProductModel);
@@ -17,6 +18,11 @@ export const createProduct = async (req: Request, res: Response) => {
 };
 export const updateProduct = async (req: Request, res: Response) => {
   const result = await updateService(req as AuthRequest, ProductModel);
+  return res.status(200).json(result);
+};
+
+export const productsDetailsById = async (req: Request, res: Response) => {
+  const result = await detailsByIDService(req as AuthRequest, ProductModel);
   return res.status(200).json(result);
 };
 

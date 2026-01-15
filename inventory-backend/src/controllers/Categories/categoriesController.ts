@@ -9,6 +9,7 @@ import { checkAssociateService } from '../../services/common/checkAssociateServi
 import ProductModel from '../../models/Products/productsModel';
 import mongoose from 'mongoose';
 import { deleteService } from '../../services/common/deleteService';
+import { detailsByIDService } from '../../services/common/detailsByIDService';
 
 export const createCategory = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, CategoriesModel);
@@ -30,6 +31,11 @@ export const categoryList = async (req: Request, res: Response) => {
 
   return res.status(200).json(result);
 };
+export const categoryDetailsById = async (req: Request, res: Response) => {
+  const result = await detailsByIDService(req as AuthRequest, CategoriesModel);
+  return res.status(200).json(result);
+};
+
 export const categoryDropDown = async (req: Request, res: Response) => {
   const result = await dropDownService(req as AuthRequest, CategoriesModel, {
     _id: 1,

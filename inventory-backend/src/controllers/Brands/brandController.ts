@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 import { checkAssociateService } from '../../services/common/checkAssociateService';
 import ProductModel from '../../models/Products/productsModel';
 import { deleteService } from '../../services/common/deleteService';
+import { detailsByIDService } from '../../services/common/detailsByIDService';
 
 export const createBrand = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, BrandModel);
@@ -16,6 +17,10 @@ export const createBrand = async (req: Request, res: Response) => {
 };
 export const updateBrand = async (req: Request, res: Response) => {
   const result = await updateService(req as AuthRequest, BrandModel);
+  return res.status(200).json(result);
+};
+export const brandDetailsById = async (req: Request, res: Response) => {
+  const result = await detailsByIDService(req as AuthRequest, BrandModel);
   return res.status(200).json(result);
 };
 export const brandList = async (req: Request, res: Response) => {

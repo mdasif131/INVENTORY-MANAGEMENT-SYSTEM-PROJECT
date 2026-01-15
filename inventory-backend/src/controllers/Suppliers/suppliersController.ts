@@ -9,6 +9,7 @@ import { checkAssociateService } from '../../services/common/checkAssociateServi
 import mongoose from 'mongoose';
 import { deleteService } from '../../services/common/deleteService';
 import PurchaseModel from '../../models/Purchases/purchasesModel';
+import { detailsByIDService } from '../../services/common/detailsByIDService';
 
 export const createSupplier = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, SupplierModel);
@@ -16,6 +17,10 @@ export const createSupplier = async (req: Request, res: Response) => {
 };
 export const updateSupplier = async (req: Request, res: Response) => {
   const result = await updateService(req as AuthRequest, SupplierModel);
+  return res.status(200).json(result);
+};
+export const supplierDetailsById = async (req: Request, res: Response) => {
+  const result = await detailsByIDService(req as AuthRequest, SupplierModel);
   return res.status(200).json(result);
 };
 export const supplierList = async (req: Request, res: Response) => {

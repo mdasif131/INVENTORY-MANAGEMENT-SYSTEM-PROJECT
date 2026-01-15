@@ -1,13 +1,13 @@
 import exress from 'express';
 import { login, profileDetails, profileUpdate, recoverResetPass, recoverVerifyEmail, recoverVerifyOTP, registration } from '../controllers/Users/userController';
 import { authenticate } from '../middlewares/authVerify';
-import { brandDropDown, brandList, createBrand, deleteBrand, updateBrand } from '../controllers/Brands/brandController';
+import { brandDetailsById, brandDropDown, brandList, createBrand, deleteBrand, updateBrand } from '../controllers/Brands/brandController';
 import { categoryDropDown, categoryList, createCategory, deleteCategory, updateCategory } from '../controllers/Categories/categoriesController';
-import { createCustomer, customerDropDown, CustomerList, deleteCustomer, updateCustomer } from '../controllers/Customers/customersController';
-import { createSupplier, deleteSupplier, supplierDropDown, supplierList, updateSupplier } from '../controllers/Suppliers/suppliersController';
-import { createExpensetypes, deleteExpenseType, ExpensetypesDropDown, expensetypesList, updateExpensetypes } from '../controllers/Expenses/expensesTypeController';
-import { createExpense, deleteExpense, expensesList, updateExpense } from '../controllers/Expenses/expensesController';
-import { createProduct, deleteProduct, productList, updateProduct } from '../controllers/Products/productsController';
+import { createCustomer, customerDetailsById, customerDropDown, CustomerList, deleteCustomer, updateCustomer } from '../controllers/Customers/customersController';
+import { createSupplier, deleteSupplier, supplierDetailsById, supplierDropDown, supplierList, updateSupplier } from '../controllers/Suppliers/suppliersController';
+import { createExpensetypes, deleteExpenseType, expenseTypeDetailsById, ExpensetypesDropDown, expensetypesList, updateExpensetypes } from '../controllers/Expenses/expensesTypeController';
+import { createExpense, deleteExpense, expenseDetailsById, expensesList, updateExpense } from '../controllers/Expenses/expensesController';
+import { createProduct, deleteProduct, productList, productsDetailsById, updateProduct } from '../controllers/Products/productsController';
 import { createPurchases, purchaseDelete, purchasesList } from '../controllers/Purchases/purchasesController';
 import { createSales, salesDelete, SalesList } from '../controllers/Sells/salesController';
 import { createReturn, returnDelete, returnList } from '../controllers/Returns/returnsControllers';
@@ -37,6 +37,7 @@ router.put("/update-brand/:id", authenticate, updateBrand)
 router.get("/brand-list/:pageNo/:perPage/:searchKeyword", authenticate, brandList)
 router.get("/brandDropDown", authenticate, brandDropDown) 
 router.delete('/delete-brand/:id', authenticate, deleteBrand);
+router.get('/brand-details-by-id/:id', authenticate, brandDetailsById);
 
 // Categories 
 router.post("/create-category", authenticate, createCategory)
@@ -44,6 +45,7 @@ router.put('/update-category/:id', authenticate, updateCategory);
 router.get("/category-list/:pageNo/:perPage/:searchKeyword", authenticate, categoryList)
 router.get('/categoryDropDown', authenticate, categoryDropDown);
 router.delete('/delete-category/:id', authenticate, deleteCategory);
+router.get('/category-details-by-id/:id', authenticate, brandDetailsById);
 
 // Customers 
 router.post("/create-customer", authenticate, createCustomer)
@@ -51,6 +53,7 @@ router.put('/update-customer/:id', authenticate, updateCustomer);
 router.get("/customer-list/:pageNo/:perPage/:searchKeyword", authenticate, CustomerList)
 router.get('/customerDropDown', authenticate, customerDropDown);
 router.delete('/delete-customer/:id', authenticate, deleteCustomer);
+router.get('/customer-details-by-id/:id', authenticate, customerDetailsById);
 
 // Suppliers 
 router.post("/create-supplier", authenticate, createSupplier)
@@ -58,6 +61,7 @@ router.put('/update-supplier/:id', authenticate, updateSupplier);
 router.get("/supplier-list/:pageNo/:perPage/:searchKeyword", authenticate, supplierList)
 router.get('/supplierDropDown', authenticate, supplierDropDown);
 router.delete('/delete-supplier/:id', authenticate, deleteSupplier);
+router.get('/supplier-details-by-id/:id', authenticate, supplierDetailsById);
 
 // Expense Types 
 router.post('/create-expensetypes', authenticate, createExpensetypes);
@@ -65,19 +69,21 @@ router.put('/update-expensetypes/:id', authenticate, updateExpensetypes);
 router.get("/expensetypes-list/:pageNo/:perPage/:searchKeyword", authenticate, expensetypesList)
 router.get('/expensetypesDropDown', authenticate, ExpensetypesDropDown);
 router.delete('/delete-expense-type/:id', authenticate, deleteExpenseType);
+router.get('/expensetype-details-by-id/:id', authenticate, expenseTypeDetailsById);
 
 // Expenses
 router.post('/create-expenses', authenticate, createExpense);
 router.put('/update-expenses/:id', authenticate, updateExpense);
 router.get("/expenses-list/:pageNo/:perPage/:searchKeyword", authenticate, expensesList)
 router.delete('/delete-expense/:id', authenticate, deleteExpense);
-
+router.get('/expenses-details-by-id/:id', authenticate, expenseDetailsById);
 
 // Products
 router.post('/create-product', authenticate, createProduct);
 router.put('/update-product/:id', authenticate, updateProduct);
 router.get("/product-list/:pageNo/:perPage/:searchKeyword", authenticate, productList)
 router.delete('/delete-product/:id', authenticate, deleteProduct);
+router.get('/products-details-by-id/:id', authenticate, productsDetailsById);
 
 // Purchases
 router.post('/create-purchases', authenticate, createPurchases);
