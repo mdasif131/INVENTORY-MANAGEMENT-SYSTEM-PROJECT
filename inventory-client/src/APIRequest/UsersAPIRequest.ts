@@ -1,23 +1,18 @@
 import axios from 'axios';
+import { AxiosHeader, BaseURL } from '../helper/config';
 import { ErrorToast, SuccessToast } from '../helper/formHelper';
 import {
-  getToken,
-  setToken,
-  setUserInfo,
   getUerInfo,
   setEamil,
   setOTP,
+  setToken,
+  setUserInfo
 } from '../helper/sessionHelper';
-import { HideLoader, ShowLoader } from '../redux/state_slice/settingsSlice';
-import { store } from '../redux/store/store';
 import type { IResetPassBody, IUserDetails, LoginRequestBody, RegistrationRequestBody } from '../helper/types';
 import { SetProfile } from '../redux/state_slice/profileSlice';
-import { BaseURL } from '../helper/config';
-const AxiosHeader = {
-  headers: {
-    Authorization: `Bearer ${getToken()}`,
-  },
-};
+import { HideLoader, ShowLoader } from '../redux/state_slice/settingsSlice';
+import { store } from '../redux/store/store';
+
 
 export async function LoginRequest(
   email: string,
@@ -33,8 +28,6 @@ export async function LoginRequest(
       setToken(res.data?.token);
       setUserInfo(res.data?.data);
       SuccessToast('Login Success');
-      console.log(res.data?.data);
-      console.log(res.data?.token);
       return true;
     } else {
       ErrorToast(res.data.message || 'Something went wrong');

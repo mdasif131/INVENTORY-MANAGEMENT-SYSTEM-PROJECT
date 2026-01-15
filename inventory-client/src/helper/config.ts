@@ -1,1 +1,8 @@
-export const BaseURL = 'http://localhost:5000/api/v1';
+import { getToken } from "./sessionHelper";
+
+export const BaseURL = 'https://inventory-management-system-backend-asif.vercel.app/api/v1';
+export const AxiosHeader = {
+  headers: {
+    Authorization: `Bearer ${getToken()}`,
+  },
+};
