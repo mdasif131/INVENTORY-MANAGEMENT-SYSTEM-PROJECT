@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
+
 interface TypeState {
   List: any[] | null;
   ListTotal: number;
@@ -11,17 +12,17 @@ const initialState: TypeState = {
 };
 
 export const brandSlice = createSlice({
-  name: 'purchase',
+  name: 'expense',
   initialState,
   reducers: {
-    SetPurchaseList: (state, action: PayloadAction<any[]>) => {
+    SetExpenseList: (state, action: PayloadAction<any[]>) => {
       state.List = action.payload;
     },
-    SetPurchaseListTotal: (state, action: PayloadAction<number>) => {
+    SetExpenseListTotal: (state, action: PayloadAction<number>) => {
       state.ListTotal = action.payload;
     },
   },
 });
 
-export const { SetPurchaseList, SetPurchaseListTotal } = brandSlice.actions;
+export const { SetExpenseList, SetExpenseListTotal } = brandSlice.actions;
 export default brandSlice.reducer;
