@@ -46,7 +46,7 @@ const data = {
       icon: Users,
       items: [
         { title: 'New Customer', url: '#' },
-        { title: 'Customer List', url: '#' },
+        { title: 'Customer List', url: '/customer-list' },
       ],
     },
     {
@@ -55,7 +55,7 @@ const data = {
       icon: TruckElectric,
       items: [
         { title: 'New Suplier', url: '#' },
-        { title: 'Supplier List', url: '#' },
+        { title: 'Supplier List', url: '/supplier-list' },
       ],
     },
     {
@@ -64,9 +64,9 @@ const data = {
       icon: Landmark,
       items: [
         { title: 'New Expense Type', url: '#' },
-        { title: 'Expense Type List', url: '#' },
+        { title: 'Expense Type List', url: '/expensetype-list' },
         { title: 'New Expense', url: '#' },
-        { title: 'Expense List', url: '#' },
+        { title: 'Expense List', url: '/expense-list' },
       ],
     },
     {
@@ -77,9 +77,9 @@ const data = {
         { title: 'New Brand', url: '#' },
         { title: 'Brand List', url: '/brand-list' },
         { title: 'New Category', url: '#' },
-        { title: 'CategoryList', url: '#' },
+        { title: 'CategoryList', url: '/category-list' },
         { title: 'New Product', url: '#' },
-        { title: 'Product List', url: '#' },
+        { title: 'Product List', url: '/product-list' },
       ],
     },
     {
@@ -88,7 +88,7 @@ const data = {
       icon: ShoppingBag,
       items: [
         { title: 'New Purchase', url: '#' },
-        { title: 'Purchase List', url: '#' },
+        { title: 'Purchase List', url: '/purchase-list' },
       ],
     },
     {
@@ -97,7 +97,7 @@ const data = {
       icon: ShoppingCart,
       items: [
         { title: 'New Sale', url: '#' },
-        { title: 'Sale List', url: '#' },
+        { title: 'Sale List', url: '/sales-list' },
       ],
     },
     {
@@ -106,7 +106,7 @@ const data = {
       icon: Tags,
       items: [
         { title: 'New Return', url: '#' },
-        { title: 'Return List', url: '#' },
+        { title: 'Return List', url: '/retrun-list' },
       ],
     },
     {

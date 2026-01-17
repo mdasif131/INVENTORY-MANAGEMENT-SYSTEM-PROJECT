@@ -17,6 +17,8 @@ import ProductListPage from './pages/ProductPage/ProductListPage';
 import ReturnListPage from './pages/ReturnPage/ReturnListPage';
 import SalesListPage from './pages/SalesPage/SalesListPage';
 import SupplierListPage from './pages/SupplierPage/SupplierListPage';
+import ExpenseTypeListPage from './pages/ExpensesPage/ExpenseTypeListPage';
+import PurchaseListPage from './pages/PurchasePage/PurchaseListPage';
 const App = () => {
   return (
     <>
@@ -37,9 +39,11 @@ const App = () => {
             <Route path="/brand-list" element={<BrandListPage />} />
             <Route path="/category-list" element={<CategoryListPage />} />
             <Route path="/customer-list" element={<CustomerListPage />} />
+            <Route path="/expensetype-list" element={<ExpenseTypeListPage />} />
             <Route path="/expense-list" element={<ExpenseListPage />} />
             <Route path="/product-list" element={<ProductListPage />} />
-            <Route path="/return-list" element={<ReturnListPage />} />
+            <Route path="/purchase-list" element={<PurchaseListPage />} />
+            <Route path="/retrun-list" element={<ReturnListPage />} />
             <Route path="/sales-list" element={<SalesListPage />} />
             <Route path="/supplier-list" element={<SupplierListPage />} />
           </Route>
