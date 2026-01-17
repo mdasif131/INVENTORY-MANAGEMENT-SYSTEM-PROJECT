@@ -75,7 +75,7 @@ const data = {
       icon: PackageSearch,
       items: [
         { title: 'New Brand', url: '#' },
-        { title: 'Brand List', url: '#' },
+        { title: 'Brand List', url: '/brand-list' },
         { title: 'New Category', url: '#' },
         { title: 'CategoryList', url: '#' },
         { title: 'New Product', url: '#' },

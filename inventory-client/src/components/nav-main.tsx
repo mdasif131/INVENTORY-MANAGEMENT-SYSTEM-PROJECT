@@ -106,7 +106,9 @@ export function NavMain({
                             <a
                               href={subItem.url}
                               className={
-                                subActive ? 'bg-red-500 text-white' : ''
+                                subActive
+                                  ? 'text-blue-600 border-r-2 border-blue-600 bg-blue-50'
+                                  : ''
                               }
                             >
                               <span>{subItem.title}</span>

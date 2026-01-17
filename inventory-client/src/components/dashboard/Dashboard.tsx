@@ -1,11 +1,14 @@
+import ReactPaginateImport from 'react-paginate';
+
+const ReactPaginate =
+  (ReactPaginateImport as any).default ?? ReactPaginateImport;
 
 const Dashboard = () => {
   return (
-    <>
-      <h1>MD ASIF CHY</h1>
-    
-    </>
-  )
-}
+    <div>
+     
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

@@ -9,8 +9,8 @@ import {
 } from '../redux/state_slice/brandSlice';
 
 export async function GetBrandListRequest(
-  pageNo: string | number,
-  perPage: string | number,
+  pageNo:  number,
+  perPage: string |number,
   SearchKeyword: string
 ): Promise<boolean> {
   store.dispatch(ShowLoader());

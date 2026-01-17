@@ -16,7 +16,7 @@ const buttonVariants = cva(
         greenbtn:
           'bg-green-500 text-white hover:bg-green-600 focus-visible:ring-green-500/20 cursor-pointer',
         skybtn:
-          'bg-sky-500 text-white hover:bg-sky-600 focus-visible:ring-sky-500/20 cursor-pointer',
+          'bg-blue-500 text-white hover:bg-sky-600 focus-visible:ring-sky-500/20 cursor-pointer',
         newtaskbtn:
           'bg-purple-400 text-white hover:bg-purple-600 focus-visible:ring-purple-500/20 cursor-pointer',
         outline:
