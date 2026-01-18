@@ -10,6 +10,7 @@ import mongoose from 'mongoose';
 import { deleteService } from '../../services/common/deleteService';
 import SellSummaryModel from '../../models/Sell/sellSummaryModel';
 import { detailsByIDService } from '../../services/common/detailsByIDService';
+import ReturnSummaryModel from '../../models/Returns/returnSummary';
 
 export const createCustomer = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, CustomerModel);
@@ -60,8 +61,18 @@ export const deleteCustomer = async (
     { customerID: new mongoose.Types.ObjectId(deleteID) },
     SellSummaryModel
   );
-
+  const checkAssociate2 = await checkAssociateService(
+    {
+      customerID: new mongoose.Types.ObjectId(deleteID),
+    },
+    ReturnSummaryModel,
+  );
   if (checkAssociate) {
+    res
+      .status(400)
+      .json({ status: 'Can not delete', data: 'Associate with Sales' });
+  }
+  if (checkAssociate2) {
     res
       .status(400)
       .json({ status: 'Can not delete', data: 'Associate with Sales' });
