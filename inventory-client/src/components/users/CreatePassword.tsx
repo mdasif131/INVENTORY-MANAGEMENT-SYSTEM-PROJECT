@@ -37,8 +37,8 @@ const CreatePassword = () => {
       transition={{ duration: 1, ease: 'easeIn' }}
       className="w-full h-screen flex justify-center items-center"
     >
-      <Card className="w-full max-w-md">
-        <CardTitle className="inline-flex items-center justify-center py-5 text-xl text-gray-900">
+      <Card className="w-full max-w-md shadow-xl">
+        <CardTitle className="inline-flex items-center justify-center py-5 text-xl text-blue-600">
           SET NEW PASSWORD
         </CardTitle>
         <CardContent>
@@ -82,7 +82,7 @@ const CreatePassword = () => {
               <Input
                 id="password"
                 placeholder="User Password"
-                className="focus-visible:ring-purple-500"
+                className="focus-visible:ring-blue-500"
                 type="password"
                 ref={input => {
                   passwordRef.current = input;
@@ -104,7 +104,7 @@ const CreatePassword = () => {
               <Input
                 id="conPassword"
                 placeholder="Confrim Password"
-                className="focus-visible:ring-purple-500"
+                className="focus-visible:ring-blue-500"
                 type="password"
                 ref={input => {
                   confirmPasswordRef.current = input;
@@ -127,7 +127,7 @@ const CreatePassword = () => {
           >
             <Button
               onClick={setNewPassword}
-              className="w-full bg-purple-500 text-white inline-flex items-center justify-center py-2 font-semibold rounded-lg hover:bg-purple-950 hoverTransition"
+              className="w-full bg-blue-500 text-white inline-flex items-center justify-center py-2 font-semibold rounded-lg hover:bg-blue-600 hoverTransition"
             >
               Next
             </Button>

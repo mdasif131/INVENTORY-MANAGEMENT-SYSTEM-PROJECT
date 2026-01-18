@@ -1,5 +1,5 @@
 import { ChevronRight, type LucideIcon } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   Collapsible,
   CollapsibleContent,
@@ -63,8 +63,10 @@ export function NavMain({
                   tooltip={item.title}
                   className="hover:text-blue-600 hover:bg-blue-50 cursor-pointer"
                 >
-                  {item.icon && <item.icon />}
-                  <span>{item.title}</span>
+                  <Link to={item.url} className='flex items-center justify-center gap-1'>
+                    {item.icon && <item.icon size={18}/>}
+                    <span>{item.title}</span>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             );

@@ -180,7 +180,7 @@ const DataTable: React.FC<DataTableProps> = ({
                           {onEdit && (
                             <button
                               onClick={() => onEdit(item)}
-                              className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                              className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors cursor-pointer"
                               aria-label="Edit"
                             >
                               <Edit className="w-4 h-4" />
@@ -189,7 +189,7 @@ const DataTable: React.FC<DataTableProps> = ({
                           {onDelete && (
                             <button
                               onClick={() => onDelete(item)}
-                              className="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors"
+                              className="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors cursor-pointer"
                               aria-label="Delete"
                             >
                               <Trash2 className="w-4 h-4" />

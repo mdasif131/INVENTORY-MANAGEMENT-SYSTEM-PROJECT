@@ -62,8 +62,8 @@ const Registration = () => {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="w-full h-screen flex justify-center items-center px-4"
     >
-      <Card className="w-full max-w-md max-sm:max-w-sm">
-        <CardTitle className="inline-flex items-center justify-center py-5 text-xl text-gray-900">
+      <Card className="w-full max-w-md max-sm:max-w-sm shadow-xl">
+        <CardTitle className="inline-flex items-center justify-center py-5 text-xl text-blue-600">
           Sing Up
         </CardTitle>
         <CardContent>
@@ -81,7 +81,7 @@ const Registration = () => {
                 id="email"
                 type="email"
                 placeholder="User Email"
-                className="focus-visible:ring-purple-500"
+                className="focus-visible:ring-blue-500"
                 ref={input => {
                   emailRef.current = input;
                 }}
@@ -101,7 +101,7 @@ const Registration = () => {
               <Input
                 id="name"
                 placeholder="First Name"
-                className="focus-visible:ring-purple-500"
+                className="focus-visible:ring-blue-500"
                 type="text"
                 ref={input => {
                   firstNameRef.current = input;
@@ -121,7 +121,7 @@ const Registration = () => {
               <Input
                 id="lastName"
                 placeholder="Last Name"
-                className="focus-visible:ring-purple-500"
+                className="focus-visible:ring-blue-500"
                 type="text"
                 ref={input => {
                   lastNameRef.current = input;
@@ -141,7 +141,7 @@ const Registration = () => {
               <Input
                 id="mobile"
                 placeholder="Mobile"
-                className="focus-visible:ring-purple-500"
+                className="focus-visible:ring-blue-500"
                 type="text"
                 ref={input => {
                   mobileRef.current = input;
@@ -161,7 +161,7 @@ const Registration = () => {
               <Input
                 id="password"
                 placeholder="User Password"
-                className="focus-visible:ring-purple-500"
+                className="focus-visible:ring-blue-500"
                 type="password"
                 ref={input => {
                   passwordRef.current = input;
@@ -184,7 +184,7 @@ const Registration = () => {
           >
             <Button
               onClick={onRegistration}
-              className="w-full bg-purple-500 text-white inline-flex items-center justify-center py-2 font-semibold rounded-lg hover:bg-purple-950 hoverTransition"
+              className="w-full bg-blue-500 text-white inline-flex items-center justify-center py-2 font-semibold rounded-lg hover:bg-blue-600 hoverTransition"
             >
               Next
             </Button>
@@ -192,13 +192,13 @@ const Registration = () => {
           <div className="flex flex-col items-center justify-center text-[16px] text-slate-500 py-2">
             <Link
               to={'/login'}
-              className="hover:text-purple-500 hoverTransition"
+              className="hover:text-blue-500 hoverTransition"
             >
               Sing In
             </Link>
             <Link
               to={'/send-otp'}
-              className="hover:text-purple-500 hoverTransition"
+              className="hover:text-blue-500 hoverTransition"
             >
               Forget Password
             </Link>

@@ -13,7 +13,7 @@ const retrunsList = () => {
       key: 'name',
       label: 'CUSTOMER',
       render: (retrun: any) => (
-        <span className="font-semibold hover:text-blue-500 hoverTransition">
+        <span className="font-semibold cursor-pointer hover:text-lg hover:text-blue-500 hoverTransition">
           {retrun.customers[0].customerName}
         </span>
       ),

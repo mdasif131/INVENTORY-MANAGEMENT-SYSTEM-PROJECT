@@ -20,18 +20,20 @@ const ExpenseTypeList = () => {
       key: 'name',
       label: 'NAME',
       render: (expensType: any) => (
-        <span className="font-semibold hover:text-blue-500 hoverTransition">
+        <span className="font-semibold cursor-pointer hover:text-lg hover:text-blue-500 hoverTransition">
           {expensType.name}
         </span>
       ),
     },
-   
+
     {
       key: 'createdAt',
       label: 'CREATED',
       hidden: 'sm' as const,
       render: (expensType: any) => (
-        <span className="text-gray-600">{formatDate(expensType.createdAt)}</span>
+        <span className="text-gray-600">
+          {formatDate(expensType.createdAt)}
+        </span>
       ),
     },
   ];

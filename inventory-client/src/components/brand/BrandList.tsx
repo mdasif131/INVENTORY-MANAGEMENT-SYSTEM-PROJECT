@@ -16,7 +16,7 @@ const BrandList = () => {
       key: 'name',
       label: 'NAME',
       render: (brand: any) => (
-        <span className="font-semibold hover:text-blue-500 hoverTransition">
+        <span className="font-semibold cursor-pointer hover:text-lg hover:text-blue-500 hoverTransition">
           {brand.name}
         </span>
       ),

@@ -16,7 +16,7 @@ const SalesList = () => {
       key: 'name',
       label: 'CUSTOMER',
       render: (sale: any) => (
-        <span className="font-semibold hover:text-blue-500 hoverTransition">
+        <span className="font-semibold cursor-pointer hover:text-lg hover:text-blue-500 hoverTransition">
           {sale.customers[0].customerName}
         </span>
       ),

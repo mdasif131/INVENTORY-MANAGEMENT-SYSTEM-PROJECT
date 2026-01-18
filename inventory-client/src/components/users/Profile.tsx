@@ -107,7 +107,12 @@ const Profile = () => {
   return (
     <section className="w-full">
       <div className="max-w-7xl mx-auto bg-white px-8 py-10 rounded-xl shadow-2xl relative">
-       <button onClick={()=> navigate('/')} className='absolute right-5 top-4 text-red-400 cursor-pointer'><X  size={25}/></button>
+        <button
+          onClick={() => navigate('/')}
+          className="absolute right-5 top-4 text-red-400 cursor-pointer"
+        >
+          <X size={25} />
+        </button>
         {/* Profile Image */}
         <div className="flex flex-col items-center mb-8">
           <img
@@ -118,7 +123,7 @@ const Profile = () => {
             alt="User Profile"
             className="w-32 h-32 rounded-full object-cover"
           />
-          <hr className="w-full mt-6 border-slate-300" />
+          <hr className="w-full mt-6 border-blue-300" />
         </div>
 
         {/* Form */}
@@ -138,7 +143,7 @@ const Profile = () => {
             </label>
             <label
               htmlFor="picture"
-              className="border rounded-md py-2 px-4 text-center cursor-pointer hover:ring hover:ring-purple-500"
+              className="border rounded-md py-2 px-4 text-center cursor-pointer hover:ring hover:ring-blue-500"
             >
               Upload Image
             </label>
@@ -167,7 +172,7 @@ const Profile = () => {
               id="email"
               type="email"
               defaultValue={profileData?.email}
-              className="focus-visible:ring-purple-500"
+              className="focus-visible:ring-blue-500"
             />
           </div>
 
@@ -182,7 +187,7 @@ const Profile = () => {
               ref={input => {
                 firstNameRef.current = input;
               }}
-              className="focus-visible:ring-purple-500"
+              className="focus-visible:ring-blue-500"
             />
           </div>
 
@@ -197,7 +202,7 @@ const Profile = () => {
               ref={input => {
                 lastNameRef.current = input;
               }}
-              className="focus-visible:ring-purple-500"
+              className="focus-visible:ring-blue-500"
             />
           </div>
 
@@ -211,7 +216,7 @@ const Profile = () => {
               }}
               type="text"
               defaultValue={profileData?.mobile}
-              className="focus-visible:ring-purple-500"
+              className="focus-visible:ring-blue-500"
             />
           </div>
 
@@ -227,7 +232,7 @@ const Profile = () => {
               type="password"
               defaultValue={profileData?.password}
               placeholder="••••••••"
-              className="focus-visible:ring-purple-500"
+              className="focus-visible:ring-blue-500"
             />
           </div>
 
@@ -236,7 +241,7 @@ const Profile = () => {
             <Button
               onClick={updateMyProfile}
               size="lg"
-              variant="secondary"
+              variant="skybtn"
               className="w-full max-w-md"
             >
               UPDATE

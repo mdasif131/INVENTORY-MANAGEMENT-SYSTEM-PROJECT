@@ -16,7 +16,7 @@ const SupplierList = () => {
       key: 'name',
       label: 'SUPPLIER NAME',
       render: (supplier: any) => (
-        <span className="font-semibold hover:text-blue-500 hoverTransition">
+        <span className="font-semibold cursor-pointer hover:text-lg hover:text-blue-500 hoverTransition">
           {supplier.name}
         </span>
       ),

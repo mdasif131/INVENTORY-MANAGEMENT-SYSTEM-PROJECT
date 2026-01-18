@@ -15,7 +15,7 @@ const PurchaseList = () => {
       key: 'name',
       label: 'SUPPLIER',
       render: (purchase: any) => (
-        <span className="font-semibold hover:text-blue-500 hoverTransition">
+        <span className="font-semibold cursor-pointer hover:text-lg hover:text-blue-500 hoverTransition">
           {purchase.suppliers[0].name}
         </span>
       ),

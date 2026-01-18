@@ -31,9 +31,9 @@ const Login = () => {
     }
   };
   return (
-    <div className="w-full h-screen flex justify-center items-center px-4">
-      <Card className="w-full max-sm:max-w-sm md:max-w-md ">
-        <CardTitle className="inline-flex items-center justify-center py-5 text-xl text-gray-900">
+    <div className="w-full h-screen flex justify-center items-center px-4 ">
+      <Card className="w-full max-sm:max-w-sm md:max-w-md shadow-xl ">
+        <CardTitle className="inline-flex items-center justify-center py-5 text-xl text-blue-600">
           Sing In
         </CardTitle>
         <CardContent>
@@ -49,7 +49,7 @@ const Login = () => {
                 id="email"
                 type="email"
                 placeholder="User Email"
-                className="focus-visible:ring-purple-500"
+                className="focus-visible:ring-blue-500"
                 ref={input => {
                   emailRef.current = input;
                 }}
@@ -61,7 +61,7 @@ const Login = () => {
               <Input
                 id="password"
                 placeholder="User password"
-                className="focus-visible:ring-purple-500"
+                className="focus-visible:ring-blue-500"
                 type="password"
                 ref={input => {
                   passRef.current = input;
@@ -80,7 +80,7 @@ const Login = () => {
           >
             <Button
               onClick={submitLogin}
-              className="w-full bg-purple-500 text-white inline-flex items-center justify-center py-2 font-semibold rounded-lg hover:bg-purple-950 hoverTransition"
+              className="w-full bg-blue-500 text-white inline-flex items-center justify-center py-2 font-semibold rounded-lg hover:bg-blue-600 hoverTransition"
             >
               Next
             </Button>
@@ -88,13 +88,13 @@ const Login = () => {
           <div className="flex flex-col items-center justify-center text-[16px] text-slate-500 py-2">
             <Link
               to={'/registration'}
-              className="hover:text-purple-500 hoverTransition"
+              className="hover:text-blue-500 hoverTransition"
             >
               Sing Up
             </Link>
             <Link
               to={'/send-otp'}
-              className="hover:text-purple-500 hoverTransition"
+              className="hover:text-blue-500 hoverTransition"
             >
               Forget Password
             </Link>

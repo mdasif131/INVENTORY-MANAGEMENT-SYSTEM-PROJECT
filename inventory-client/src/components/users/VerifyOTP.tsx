@@ -37,7 +37,7 @@ const VerifyOTP = () => {
     <div className="w-full h-screen flex justify-center items-center">
       <Card className="w-full max-w-md ">
         <CardHeader>
-          <CardTitle className="inline-flex justify-start text-xl text-gray-900">
+          <CardTitle className="inline-flex justify-start text-xl text-blue-600">
             OTP VERIFICATION
           </CardTitle>
           <CardDescription>
@@ -64,27 +64,27 @@ const VerifyOTP = () => {
               >
                 <InputOTPGroup className="flex w-full ">
                   <InputOTPSlot
-                    className="border-purple-500 flex-1"
+                    className="border-blue-500 flex-1"
                     index={0}
                   />
                   <InputOTPSlot
-                    className="border-purple-500 flex-1"
+                    className="border-blue-500 flex-1"
                     index={1}
                   />
                   <InputOTPSlot
-                    className="border-purple-500 flex-1"
+                    className="border-blue-500 flex-1"
                     index={2}
                   />
                   <InputOTPSlot
-                    className="border-purple-500 flex-1"
+                    className="border-blue-500 flex-1"
                     index={3}
                   />
                   <InputOTPSlot
-                    className="border-purple-500 flex-1"
+                    className="border-blue-500 flex-1"
                     index={4}
                   />
                   <InputOTPSlot
-                    className="border-purple-500 flex-1"
+                    className="border-blue-500 flex-1"
                     index={5}
                   />
                 </InputOTPGroup>
@@ -101,9 +101,9 @@ const VerifyOTP = () => {
           >
             <Button
               onClick={submitOTP}
-              className="w-full bg-purple-500 text-white inline-flex items-center justify-center py-2 font-semibold rounded-lg hover:bg-purple-950 hoverTransition"
+              className="w-full bg-blue-500 text-white inline-flex items-center justify-center py-2 font-semibold rounded-lg hover:bg-blue-600 hoverTransition"
             >
-              Send OTP
+              Next
             </Button>
           </motion.div>
         </CardFooter>

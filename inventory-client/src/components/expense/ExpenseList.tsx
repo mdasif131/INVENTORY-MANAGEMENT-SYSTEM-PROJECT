@@ -15,7 +15,7 @@ const ExpenseList = () => {
       key: 'name',
       label: 'Type',
       render: (expense: any) => (
-        <span className="font-semibold hover:text-blue-500 hoverTransition">
+        <span className="font-semibold cursor-pointer hover:text-lg hover:text-blue-500 hoverTransition">
           {expense.type[0].name}
         </span>
       ),
@@ -36,7 +36,6 @@ const ExpenseList = () => {
         <span className="text-gray-600">{expense.note || 'N/A'}</span>
       ),
     },
-    
   ];
 
   const handleEdit = (expense: any) => {

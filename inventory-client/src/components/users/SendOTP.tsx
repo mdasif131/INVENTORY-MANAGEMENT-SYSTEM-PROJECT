@@ -36,7 +36,7 @@ const SendOTP = () => {
     <div className="w-full h-screen flex justify-center items-center">
       <Card className="w-full max-w-md ">
         <CardHeader>
-          <CardTitle className="inline-flex justify-start text-xl text-gray-900">
+          <CardTitle className="inline-flex justify-start text-xl text-blue-600">
             EMAIL ADDRESS
           </CardTitle>
         </CardHeader>
@@ -49,7 +49,7 @@ const SendOTP = () => {
             className="flex flex-col space-y-5"
           >
             <div className="flex flex-col gap-y-2">
-              <label htmlFor="email" className="font-semibold ">
+              <label htmlFor="email" className="font-semibold text-gray-400 ">
                 Your email address
               </label>
               <Input
@@ -59,7 +59,7 @@ const SendOTP = () => {
                   emailRef.current = input;
                 }}
                 placeholder="User Email"
-                className="focus-visible:ring-purple-500"
+                className="focus-visible:ring-blue-500"
                 required
               />
             </div>
@@ -74,7 +74,7 @@ const SendOTP = () => {
           >
             <Button
               onClick={verifyEmail}
-              className="w-full bg-purple-500 text-white inline-flex items-center justify-center py-2 font-semibold rounded-lg hover:bg-purple-950 hoverTransition"
+              className="w-full bg-blue-500 text-white inline-flex items-center justify-center py-2 font-semibold rounded-lg hover:bg-blue-950 hoverTransition"
             >
               Send OTP
             </Button>

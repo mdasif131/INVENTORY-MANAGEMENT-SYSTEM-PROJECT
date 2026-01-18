@@ -16,7 +16,7 @@ const ProductList = () => {
       key: 'name',
       label: 'NAME',
       render: (product: any) => (
-        <span className="font-semibold hover:text-blue-500 hoverTransition">
+        <span className="font-semibold cursor-pointer hover:text-lg hover:text-blue-500 hoverTransition">
           {product.name}
         </span>
       ),
@@ -42,7 +42,9 @@ const ProductList = () => {
       label: 'CATEGORY',
       hidden: 'lg' as const,
       render: (product: any) => (
-        <span className="text-gray-600">{product.categories[0].name || 'N/A'}</span>
+        <span className="text-gray-600">
+          {product.categories[0].name || 'N/A'}
+        </span>
       ),
     },
     {
