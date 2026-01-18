@@ -19,6 +19,15 @@ import SalesListPage from './pages/SalesPage/SalesListPage';
 import SupplierListPage from './pages/SupplierPage/SupplierListPage';
 import ExpenseTypeListPage from './pages/ExpensesPage/ExpenseTypeListPage';
 import PurchaseListPage from './pages/PurchasePage/PurchaseListPage';
+import SupplierCreateUpdatePage from './pages/SupplierPage/SupplierCreateUpdatePage';
+import BrandCreateUpdaePage from './pages/BrandPage/BrandCreateUpdatePage';
+import CategoryCreateUpdatePage from './pages/CategoryPage/CategoryCreateUpdatePage';
+import ExpenseCreateUpdatePage from './pages/ExpensesPage/ExpenseCreateUpdatePage';
+import SalesCreateUpdatePage from './pages/SalesPage/SalesCreateUpdatePage';
+import ReturnCreateUpdatePage from './pages/ReturnPage/ReturnCreateUpdatePage';
+import PurchaseCreateUpdatePage from './pages/PurchasePage/PurchaseCreateUpdatePage';
+import ProductCreateUpdatePage from './pages/ProductPage/ProductCreateUpdatePage';
+import ExpenseTypeCreateUpdatePage from './pages/ExpensesPage/ExpenseTypeCreateUpdatePage';
 const App = () => {
   return (
     <>
@@ -37,15 +46,24 @@ const App = () => {
             <Route index element={<DashBoardPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/brand-list" element={<BrandListPage />} />
+            <Route path="/brand-create-update" element={<BrandCreateUpdaePage />} />
             <Route path="/category-list" element={<CategoryListPage />} />
+            <Route path="/category-create-update" element={<CategoryCreateUpdatePage />} />
             <Route path="/customer-list" element={<CustomerListPage />} />
             <Route path="/expensetype-list" element={<ExpenseTypeListPage />} />
-            <Route path="/expense-list" element={<ExpenseListPage />} />
+            <Route path="/expensetype-create-update" element={<ExpenseTypeCreateUpdatePage />} />
+            <Route path="/expensetype-list" element={<ExpenseListPage />} />
+            <Route path="/expense-create-update" element={<ExpenseCreateUpdatePage />} />
             <Route path="/product-list" element={<ProductListPage />} />
+            <Route path="/product-create-update" element={<ProductCreateUpdatePage />} />
             <Route path="/purchase-list" element={<PurchaseListPage />} />
+            <Route path="/purchase-create-update" element={<PurchaseCreateUpdatePage />} />
             <Route path="/retrun-list" element={<ReturnListPage />} />
+            <Route path="/retrun-create-update" element={<ReturnCreateUpdatePage />} />
             <Route path="/sales-list" element={<SalesListPage />} />
+            <Route path="/sales-create-update" element={<SalesCreateUpdatePage />} />
             <Route path="/supplier-list" element={<SupplierListPage />} />
+            <Route path="/supplier-create-update" element={<SupplierCreateUpdatePage />}/>
           </Route>
 
           {/* Catch-all 404 - MOVED TO THE END */}

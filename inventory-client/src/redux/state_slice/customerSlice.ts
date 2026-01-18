@@ -14,11 +14,18 @@ export interface ICustomer {
 interface TypeState {
   List: ICustomer[] | null;
   ListTotal: number;
+  FormValue: ICustomer;
 }
 
 const initialState: TypeState = {
   List: [],
   ListTotal: 0,
+  FormValue: {
+    customerName: 'MD AKIB',
+    phone: '01706531351',
+    email: 'akib.doe@example.com',
+    address: '150 Main Street, BD',
+  },
 };
 
 export const brandSlice = createSlice({

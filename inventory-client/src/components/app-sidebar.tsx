@@ -45,7 +45,7 @@ const data = {
       url: '/customer',
       icon: Users,
       items: [
-        { title: 'New Customer', url: '#' },
+        { title: 'New Customer', url: '' },
         { title: 'Customer List', url: '/customer-list' },
       ],
     },
@@ -54,7 +54,7 @@ const data = {
       url: '#',
       icon: TruckElectric,
       items: [
-        { title: 'New Suplier', url: '#' },
+        { title: 'New Suplier', url: '/supplier-create-update' },
         { title: 'Supplier List', url: '/supplier-list' },
       ],
     },
@@ -63,9 +63,9 @@ const data = {
       url: '#',
       icon: Landmark,
       items: [
-        { title: 'New Expense Type', url: '#' },
+        { title: 'New Expense Type', url: '/expensetype-create-update' },
         { title: 'Expense Type List', url: '/expensetype-list' },
-        { title: 'New Expense', url: '#' },
+        { title: 'New Expense', url: '/expense-create-update' },
         { title: 'Expense List', url: '/expense-list' },
       ],
     },
@@ -74,11 +74,11 @@ const data = {
       url: '#',
       icon: PackageSearch,
       items: [
-        { title: 'New Brand', url: '#' },
+        { title: 'New Brand', url: '/brand-create-update' },
         { title: 'Brand List', url: '/brand-list' },
-        { title: 'New Category', url: '#' },
+        { title: 'New Category', url: '/category-create-update' },
         { title: 'CategoryList', url: '/category-list' },
-        { title: 'New Product', url: '#' },
+        { title: 'New Product', url: '/product-create-update' },
         { title: 'Product List', url: '/product-list' },
       ],
     },
@@ -87,7 +87,7 @@ const data = {
       url: '#',
       icon: ShoppingBag,
       items: [
-        { title: 'New Purchase', url: '#' },
+        { title: 'New Purchase', url: '/purchase-create-update' },
         { title: 'Purchase List', url: '/purchase-list' },
       ],
     },
@@ -96,7 +96,7 @@ const data = {
       url: '#',
       icon: ShoppingCart,
       items: [
-        { title: 'New Sale', url: '#' },
+        { title: 'New Sale', url: '/sales-create-update' },
         { title: 'Sale List', url: '/sales-list' },
       ],
     },
@@ -105,7 +105,7 @@ const data = {
       url: '#',
       icon: Tags,
       items: [
-        { title: 'New Return', url: '#' },
+        { title: 'New Return', url: '/retrun-create-update' },
         { title: 'Return List', url: '/retrun-list' },
       ],
     },
