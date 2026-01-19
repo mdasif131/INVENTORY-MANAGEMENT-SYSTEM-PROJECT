@@ -60,8 +60,9 @@ export const deleteSupplier = async (
 
   if (checkAssociate) {
     res
-      .status(404)
+      .status(409)
       .json({ status: 'Associate', data: 'Associate with Purchase' });
+    return;
   }
 
   const result = await deleteService(req as AuthRequest, SupplierModel);
