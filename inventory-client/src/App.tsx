@@ -28,6 +28,8 @@ import ReturnCreateUpdatePage from './pages/ReturnPage/ReturnCreateUpdatePage';
 import PurchaseCreateUpdatePage from './pages/PurchasePage/PurchaseCreateUpdatePage';
 import ProductCreateUpdatePage from './pages/ProductPage/ProductCreateUpdatePage';
 import ExpenseTypeCreateUpdatePage from './pages/ExpensesPage/ExpenseTypeCreateUpdatePage';
+import CustomerCreateUpdatePage from './pages/CustomerPage/CustomerCreateUpdatePage';
+
 const App = () => {
   return (
     <>
@@ -50,6 +52,7 @@ const App = () => {
             <Route path="/category-list" element={<CategoryListPage />} />
             <Route path="/category-create-update" element={<CategoryCreateUpdatePage />} />
             <Route path="/customer-list" element={<CustomerListPage />} />
+            <Route path="/customer-create-update" element={<CustomerCreateUpdatePage />} />
             <Route path="/expensetype-list" element={<ExpenseTypeListPage />} />
             <Route path="/expensetype-create-update" element={<ExpenseTypeCreateUpdatePage />} />
             <Route path="/expensetype-list" element={<ExpenseListPage />} />

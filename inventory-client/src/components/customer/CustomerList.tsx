@@ -3,8 +3,11 @@ import { formatDate } from '../../helper/dateFormat';
 import type { RootState } from '../../redux/store/store';
 import DataTable from '../common/DataTable';
 import { GetCustomerListRequest } from '../../APIRequest/CustomerAPIRequest';
+import { useNavigate } from 'react-router';
+import { DeleteAlert } from '../../helper/deleteAlert';
 
 const CustomerList = () => {
+  const navigate = useNavigate()
   const allCustomer = useSelector((state: RootState) => state.customer.List);
   const customerTotal = useSelector(
     (state: RootState) => state.customer.ListTotal,
@@ -55,12 +58,20 @@ const CustomerList = () => {
   ];
 
   const handleEdit = (customer: any) => {
-    console.log('Edit customer:', customer);
+    const id = customer._id
+    console.log('Edit customer:', customer._id);
+    navigate(`/customer-create-update?id=${id}`);
+    window.location.reload();
   };
 
-  const handleDelete = (customer: any) => {
-    console.log('Delete customer:', customer);
-  };
+const handleDelete = async (customer: any): Promise<void> => {
+  const id = customer._id;
+  const result = await DeleteAlert(id);
+
+  if (result) {
+    await GetCustomerListRequest(1, 20, '0');
+  }
+};
 
   return (
     <DataTable
@@ -69,7 +80,7 @@ const CustomerList = () => {
       data={allCustomer}
       total={customerTotal}
       onFetchData={GetCustomerListRequest}
-      onEdit={handleEdit}
+      updateURL="/customer-create-update"
       onDelete={handleDelete}
       initialPerPage={20} // Custom initial per page
     />

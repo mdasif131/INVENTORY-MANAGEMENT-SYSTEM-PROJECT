@@ -31,7 +31,7 @@ const data = {
     avatar: '/avatars/shadcn.jpg',
   },
 
-  teams: [{ name: 'MD ASIF', logo: Codesandbox, plan: 'Enterprise' }],
+  teams: [{ name: 'MD ASIF', logo:Codesandbox, plan: 'Enterprise' }],
 
   navMain: [
     {
@@ -45,7 +45,7 @@ const data = {
       url: '/customer',
       icon: Users,
       items: [
-        { title: 'New Customer', url: '' },
+        { title: 'New Customer', url: '/customer-create-update' },
         { title: 'Customer List', url: '/customer-list' },
       ],
     },

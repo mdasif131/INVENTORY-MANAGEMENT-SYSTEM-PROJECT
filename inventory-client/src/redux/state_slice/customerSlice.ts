@@ -10,7 +10,10 @@ export interface ICustomer {
   createdAt?: string;
   updatedAt?: string;
 }
-
+interface InputChangePayload {
+  Name: keyof ICustomer; // This ensures Name is a valid key of ICustomer
+  value: string;
+}
 interface TypeState {
   List: ICustomer[] | null;
   ListTotal: number;
@@ -21,10 +24,10 @@ const initialState: TypeState = {
   List: [],
   ListTotal: 0,
   FormValue: {
-    customerName: 'MD AKIB',
-    phone: '01706531351',
-    email: 'akib.doe@example.com',
-    address: '150 Main Street, BD',
+    customerName: '',
+    phone: '',
+    email: '',
+    address: '',
   },
 };
 
@@ -38,8 +41,25 @@ export const brandSlice = createSlice({
     SetCustomerListTotal: (state, action: PayloadAction<number>) => {
       state.ListTotal = action.payload;
     },
+    OnChangeCustomerInput: (
+      state,
+      action: PayloadAction<InputChangePayload>,
+    ) => {
+      state.FormValue[`${action.payload.Name}`] = action.payload.value;
+    },
+    ResetFormValue: (state) => {
+    (Object.keys(state.FormValue) as Array<keyof typeof state.FormValue>).forEach(key => {
+      state.FormValue[key] = '';
+    });
+
+    },
   },
 });
 
-export const { SetCustomerList, SetCustomerListTotal } = brandSlice.actions;
+export const {
+  SetCustomerList,
+  SetCustomerListTotal,
+  OnChangeCustomerInput,
+  ResetFormValue,
+} = brandSlice.actions;
 export default brandSlice.reducer;

@@ -12,6 +12,7 @@ import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
 import SelectInput from '../common/SelectInput';
 import ReactPaginateImport from 'react-paginate';
+import { Link } from 'react-router';
 
 const ReactPaginate =
   (ReactPaginateImport as any).default ?? ReactPaginateImport;
@@ -28,6 +29,8 @@ interface DataTableProps {
   columns: Column[];
   data: any[] | null;
   total: number;
+  updateURL?: string | null;
+  deleteURL?: string | null;
   onFetchData: (page: number, perPage: number, search: string) => void;
   onEdit?: (item: any) => void;
   onDelete?: (item: any) => void;
@@ -49,8 +52,8 @@ const DataTable: React.FC<DataTableProps> = ({
   columns,
   data,
   total,
+  updateURL,
   onFetchData,
-  onEdit,
   onDelete,
   showActions = true,
   initialPerPage = 10,
@@ -62,9 +65,11 @@ const DataTable: React.FC<DataTableProps> = ({
   const shouldShowScroll = total > 5;
 
   useEffect(() => {
-    if (hasFetched.current) return;
-    hasFetched.current = true;
-    onFetchData(1, perPage, searchKeyword);
+    (async () => {
+      if (hasFetched.current) return;
+      hasFetched.current = true;
+      onFetchData(1, perPage, searchKeyword);
+    })()
   }, []);
 
   const handlePageClick = (event: any) => {
@@ -107,7 +112,7 @@ const DataTable: React.FC<DataTableProps> = ({
 
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full mx-auto">
         <div className="bg-white rounded-lg shadow-2xl flex flex-col">
           <div className="flex flex-col sm:flex-row gap-4 p-6 border-b border-gray-200">
             <div className="flex-1">
@@ -169,7 +174,7 @@ const DataTable: React.FC<DataTableProps> = ({
                     {columns.map((col, colIndex) => (
                       <TableCell
                         key={colIndex}
-                        className={getResponsiveClass(col.hidden)}
+                        className={getResponsiveClass(col.hidden) }
                       >
                         {col.render ? col.render(item, index) : item[col.key]}
                       </TableCell>
@@ -177,23 +182,24 @@ const DataTable: React.FC<DataTableProps> = ({
                     {showActions && (
                       <TableCell className="text-left">
                         <div className="flex justify-start gap-2">
-                          {onEdit && (
-                            <button
-                              onClick={() => onEdit(item)}
-                              className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors cursor-pointer"
-                              aria-label="Edit"
-                            >
-                              <Edit className="w-4 h-4" />
-                            </button>
-                          )}
+                          {/* {onEdit && ( */}
+                          <Link
+                            to={`${updateURL}?id=${item._id}`}
+                            // onClick={() => onEdit(item)}
+                            className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors cursor-pointer"
+                            aria-label="Edit"
+                          >
+                            <Edit className="w-4 h-4" />
+                          </Link>
+                          {/* )} */}
                           {onDelete && (
-                            <button
-                              onClick={() => onDelete(item)}
-                              className="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors cursor-pointer"
-                              aria-label="Delete"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
+                          <button
+                            onClick={() => onDelete(item)}
+                            className="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors cursor-pointer"
+                            aria-label="Delete"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
                           )}
                         </div>
                       </TableCell>
