@@ -68,14 +68,10 @@ export const deleteCustomer = async (
     ReturnSummaryModel,
   );
   if (checkAssociate) {
-    res
-      .status(400)
-      .json({ status: 'Can not delete', data: 'Associate with Sales' });
+    res.status(404).json({ status: 'Associate', message: 'Associate with Sales' });
   }
   if (checkAssociate2) {
-    res
-      .status(400)
-      .json({ status: 'Can not delete', data: 'Associate with Sales' });
+    res.status(404).json({ status: 'Associate', message: 'Associate with Returns' });
   }
 
   const result = await deleteService(req as AuthRequest, CustomerModel);
