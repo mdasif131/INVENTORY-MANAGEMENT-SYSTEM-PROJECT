@@ -56,8 +56,9 @@ export const deleteExpenseType = async (
 
   if (checkAssociate) {
     res
-      .status(400)
-      .json({ status: 'Can not delete', data: 'Associate with Expenses' });
+      .status(409)
+      .json({ status: 'Associate', data: 'Associate with Expenses' });
+    return;
   }
 
   const result = await deleteService(req as AuthRequest, ExpenseTypeModel);

@@ -52,8 +52,9 @@ export const deleteBrand = async (
 
   if (checkAssociate) {
     res
-      .status(400)
-      .json({ status: 'Can not delete', data: 'Associate with Product' });
+      .status(409)
+      .json({ status: 'Associate', data: 'Associate with Product' });
+    return
   }
 
   const result = await deleteService(req as AuthRequest, BrandModel);
