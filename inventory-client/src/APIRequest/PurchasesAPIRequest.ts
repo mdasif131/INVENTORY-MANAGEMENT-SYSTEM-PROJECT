@@ -22,7 +22,6 @@ export async function GetPurchaseListRequest(
       if (responseData?.Rows && responseData.Rows.length > 0) {
         store.dispatch(SetPurchaseList(responseData.Rows));
         store.dispatch(SetPurchaseListTotal(responseData.Total[0].count));
-        SuccessToast('Purchases list loaded successfully');
         return true;
       } else {
         store.dispatch(SetPurchaseList([]));

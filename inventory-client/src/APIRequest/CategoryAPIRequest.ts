@@ -22,7 +22,6 @@ export async function GetCategoryListRequest(
       if (responseData?.Rows && responseData.Rows.length > 0) {
         store.dispatch(SetCategoryList(responseData.Rows));
         store.dispatch(SetCategoryListTotal(responseData.Total[0].count));
-        SuccessToast('Category list loaded successfully');
         return true;
       } else {
         store.dispatch(SetCategoryList([]));

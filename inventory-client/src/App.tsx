@@ -55,7 +55,7 @@ const App = () => {
             <Route path="/customer-create-update" element={<CustomerCreateUpdatePage />} />
             <Route path="/expensetype-list" element={<ExpenseTypeListPage />} />
             <Route path="/expensetype-create-update" element={<ExpenseTypeCreateUpdatePage />} />
-            <Route path="/expensetype-list" element={<ExpenseListPage />} />
+            <Route path="/expense-list" element={<ExpenseListPage />} />
             <Route path="/expense-create-update" element={<ExpenseCreateUpdatePage />} />
             <Route path="/product-list" element={<ProductListPage />} />
             <Route path="/product-create-update" element={<ProductCreateUpdatePage />} />

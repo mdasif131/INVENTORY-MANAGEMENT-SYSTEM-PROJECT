@@ -25,7 +25,6 @@ export async function GetBrandListRequest(
       if (responseData?.Rows && responseData.Rows.length > 0) {
         store.dispatch(SetBrandList(responseData.Rows));
         store.dispatch(SetBrandListTotal(responseData.Total[0].count));
-        SuccessToast('Brand list loaded successfully');
         return true;
       } else {
         store.dispatch(SetBrandList([]));

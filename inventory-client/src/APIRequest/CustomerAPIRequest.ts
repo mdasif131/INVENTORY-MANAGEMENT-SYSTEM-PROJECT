@@ -28,7 +28,6 @@ export async function GetCustomerListRequest(
       if (responseData?.Rows && responseData.Rows.length > 0) {
         store.dispatch(SetCustomerList(responseData.Rows));
         store.dispatch(SetCustomerListTotal(responseData.Total[0].count));
-        SuccessToast('Customer list loaded successfully');
         return true;
       } else {
         store.dispatch(SetCustomerList([]));
@@ -126,7 +125,12 @@ export async function DeleteCustomerRequest(
     if (res.status === 200 && res.data?.status === 'success') {
      SuccessToast('Request Success');
       return true
-    } else {
+    } else if (res.status === 409 && res.data?.status === "Associate") {
+      
+      ErrorToast(res.data?.message as string || "Can not delete");
+      return false
+    }
+    else {
       ErrorToast('Something went wrong');
       return false
     }

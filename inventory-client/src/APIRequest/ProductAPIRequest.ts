@@ -22,7 +22,6 @@ export async function GetProductListRequest(
       if (responseData?.Rows && responseData.Rows.length > 0) {
         store.dispatch(SetProdcutList(responseData.Rows));
         store.dispatch(SetProdcutListTotal(responseData.Total[0].count));
-        SuccessToast('Product list loaded successfully');
         return true;
       } else {
         store.dispatch(SetProdcutList([]));
