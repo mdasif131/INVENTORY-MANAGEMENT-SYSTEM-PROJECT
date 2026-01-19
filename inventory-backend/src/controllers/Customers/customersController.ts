@@ -38,7 +38,7 @@ export const CustomerList = async (req: Request, res: Response) => {
   const result = await listService(
     req as AuthRequest,
     CustomerModel,
-    SearchArray
+    SearchArray,
   );
 
   return res.status(200).json(result);
@@ -50,30 +50,37 @@ export const customerDropDown = async (req: Request, res: Response) => {
   });
   return res.status(200).json(result);
 };
-
 export const deleteCustomer = async (
   req: Request,
-  res: Response
+  res: Response,
 ): Promise<void> => {
   const deleteID = req.params.id;
 
   const checkAssociate = await checkAssociateService(
     { customerID: new mongoose.Types.ObjectId(deleteID) },
-    SellSummaryModel
+    SellSummaryModel,
   );
+
   const checkAssociate2 = await checkAssociateService(
-    {
-      customerID: new mongoose.Types.ObjectId(deleteID),
-    },
+    { customerID: new mongoose.Types.ObjectId(deleteID) },
     ReturnSummaryModel,
   );
+
   if (checkAssociate) {
-    res.status(404).json({ status: 'Associate', message: 'Associate with Sales' });
-  }
-  if (checkAssociate2) {
-    res.status(404).json({ status: 'Associate', message: 'Associate with Returns' });
+    res
+      .status(409)
+      .json({ status: 'Associate', message: 'Associate with Sales' });
+    return; // Stops execution here - customer will NOT be deleted
   }
 
+  if (checkAssociate2) {
+    res
+      .status(409)
+      .json({ status: 'Associate', message: 'Associate with Returns' });
+    return; // Stops execution here - customer will NOT be deleted
+  }
+
+  // Only reaches here if NO associations found
   const result = await deleteService(req as AuthRequest, CustomerModel);
   res.status(200).json({ status: 'success', data: result });
 };
