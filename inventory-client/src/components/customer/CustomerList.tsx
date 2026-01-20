@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { formatDate } from '../../helper/dateFormat';
 import type { RootState } from '../../redux/store/store';
 import DataTable from '../common/DataTable';
-import { GetCustomerListRequest } from '../../APIRequest/CustomerAPIRequest';
+import { DeleteCustomerRequest, GetCustomerListRequest } from '../../APIRequest/CustomerAPIRequest';
 import { useNavigate } from 'react-router';
 import { DeleteAlert } from '../../helper/deleteAlert';
 
@@ -57,16 +57,19 @@ const CustomerList = () => {
     },
   ];
 
-  const handleEdit = (customer: any) => {
-    const id = customer._id
-    console.log('Edit customer:', customer._id);
-    navigate(`/customer-create-update?id=${id}`);
-    window.location.reload();
-  };
+  // const handleEdit = (customer: any) => {
+  //   const id = customer._id
+  //   console.log('Edit customer:', customer._id);
+  //   navigate(`/customer-create-update?id=${id}`);
+  // };
 
 const handleDelete = async (customer: any): Promise<void> => {
   const id = customer._id;
-  const result = await DeleteAlert(id);
+  const result = await DeleteAlert(id, DeleteCustomerRequest, {
+    entityName: 'Customer',
+    title: 'Delete Customer?',
+    confirmButtonText: 'Yes, delete Customer!',
+  });
 
   if (result) {
     await GetCustomerListRequest(1, 20, '0');

@@ -1,6 +1,7 @@
 
 import { useSelector } from 'react-redux';
-import { GetExpensesListRequest } from '../../APIRequest/ExpenseAPIRequest';
+import { DeleteExpenseRequest, GetExpensesListRequest } from '../../APIRequest/ExpenseAPIRequest';
+import { DeleteAlert } from '../../helper/deleteAlert';
 import type { RootState } from '../../redux/store/store';
 import DataTable from '../common/DataTable';
 
@@ -38,14 +39,22 @@ const ExpenseList = () => {
     },
   ];
 
-  const handleEdit = (expense: any) => {
-    console.log('Edit expense:', expense);
-  };
+  // const handleEdit = (expense: any) => {
+  //   console.log('Edit expense:', expense);
+  // };
 
-  const handleDelete = (expense: any) => {
-    console.log('Delete expense:', expense);
-  };
+  const handleDelete = async (expense: any) => {
+    const id = expense._id;
+    const result = await DeleteAlert(id, DeleteExpenseRequest, {
+      entityName: 'Expense',
+      title: 'Delete Expense?',
+      confirmButtonText: 'Yes, delete expense!',
+    });
 
+    if (result) {
+      await GetExpensesListRequest(1, 20, '0');
+    }
+  };
   return (
     <DataTable
       title="Expense List"
@@ -53,7 +62,7 @@ const ExpenseList = () => {
       data={allexpense}
       total={expenseTotal}
       onFetchData={GetExpensesListRequest}
-      onEdit={handleEdit}
+      updateURL="/expense-create-update"
       onDelete={handleDelete}
       initialPerPage={20} // Custom initial per page
     />

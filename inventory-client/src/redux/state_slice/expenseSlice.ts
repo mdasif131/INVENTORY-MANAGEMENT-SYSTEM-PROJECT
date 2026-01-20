@@ -1,17 +1,38 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-
-interface TypeState {
-  List: any[] | null;
-  ListTotal: number;
+interface InputChangePayload {
+  name: keyof IExpense;
+  value: string | number;
 }
 
-const initialState: TypeState = {
+export interface IExpense {
+  _id?: string;
+  typeID?: string;
+  amount: number;
+  note: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+interface ExpenseState {
+  List: any[] | null;
+  ListTotal: number;
+  FormValue: IExpense;
+  ExpenseTypeDropDown: any[] | null
+}
+
+const initialState: ExpenseState = {
   List: [],
   ListTotal: 0,
+  ExpenseTypeDropDown: [],
+  FormValue: {
+    typeID: '',
+    amount: 0,
+    note: '',
+  },
 };
 
-export const brandSlice = createSlice({
+export const expenseSlice = createSlice({
   name: 'expense',
   initialState,
   reducers: {
@@ -21,8 +42,33 @@ export const brandSlice = createSlice({
     SetExpenseListTotal: (state, action: PayloadAction<number>) => {
       state.ListTotal = action.payload;
     },
+    SetExpenseTypeDropDown: (state, action) => {
+      state.ExpenseTypeDropDown = action.payload
+    }
+    ,
+    OnChangeExpenseInput: (
+      state,
+      action: PayloadAction<InputChangePayload>,
+    ) => {
+      const { name, value } = action.payload;
+      (state.FormValue as any)[name] = value;
+    },
+    ResetFormValue: state => {
+      state.FormValue = {
+        typeID: '',
+        amount: 0,
+        note: '',
+      };
+    },
   },
 });
 
-export const { SetExpenseList, SetExpenseListTotal } = brandSlice.actions;
-export default brandSlice.reducer;
+export const {
+  SetExpenseList,
+  SetExpenseListTotal,
+  OnChangeExpenseInput,
+  ResetFormValue,
+  SetExpenseTypeDropDown,
+} = expenseSlice.actions;
+
+export default expenseSlice.reducer;
