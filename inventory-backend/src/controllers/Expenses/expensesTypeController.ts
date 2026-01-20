@@ -50,8 +50,8 @@ export const deleteExpenseType = async (
 ): Promise<void> => {
   const deleteID = req.params.id;
   const checkAssociate = await checkAssociateService(
-    { supplierID: new mongoose.Types.ObjectId(deleteID) },
-    ExpensesModel
+    { typeID: new mongoose.Types.ObjectId(deleteID) },
+    ExpensesModel,
   );
 
   if (checkAssociate) {
