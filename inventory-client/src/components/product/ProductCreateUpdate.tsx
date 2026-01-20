@@ -93,7 +93,7 @@ const ProductCreateUpdate = () => {
               id="name"
               type="text"
               placeholder="Enter Name"
-              className="focus-visible:ring-blue-500 "
+              className="focus-visible:ring-blue-500 hover:border-2 hover:border-blue-500"
             />
           </div>
           <div className="flex flex-col col-span-6 ">
@@ -110,7 +110,7 @@ const ProductCreateUpdate = () => {
                   }),
                 );
               }}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-sm text-gray-700
+              className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-sm text-gray-700 hover:border-2 hover:border-blue-500
              focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="">Select Type</option>
@@ -137,7 +137,7 @@ const ProductCreateUpdate = () => {
                 );
               }}
               className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-sm text-gray-700
-             focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+             focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 hover:border-2 hover:border-blue-500"
             >
               <option value="">Select Type</option>
 
@@ -166,7 +166,7 @@ const ProductCreateUpdate = () => {
               id="unit"
               type="text"
               placeholder="Enter Note"
-              className="focus-visible:ring-blue-500 "
+              className="focus-visible:ring-blue-500 hover:border-2 hover:border-blue-500"
             />
           </div>
           <div className="flex flex-col col-span-12">
@@ -181,7 +181,7 @@ const ProductCreateUpdate = () => {
                 );
               }}
               defaultValue={FormValue.details ?? ''}
-              className="focus-visible:ring-blue-500 transition-all duration-300 hover:ring-2 hover:ring-blue-200 min-h-30"
+              className="focus-visible:ring-blue-500 transition-all duration-300  min-h-30 hover:border-2 hover:border-blue-500"
               placeholder="Type product details here..."
             />
           </div>
