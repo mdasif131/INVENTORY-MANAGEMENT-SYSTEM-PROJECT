@@ -1,9 +1,7 @@
- 
-
 import Swal from 'sweetalert2';
 
 // Type definition for delete functions
-type DeleteFunction = (id: string) => Promise<any>;
+type DeleteFunction = (id: string) => Promise<boolean>;
 
 interface DeleteAlertOptions {
   title?: string;
@@ -17,7 +15,7 @@ interface DeleteAlertOptions {
  * @param id - The ID of the item to delete
  * @param deleteFunction - The API request function to call for deletion
  * @param options - Optional customization for the alert
- * @returns Promise<boolean> - Returns true if deleted, false if cancelled
+ * @returns Promise<boolean> - Returns true if deleted, false if cancelled or failed
  */
 export async function DeleteAlert(
   id: string,
@@ -42,10 +40,11 @@ export async function DeleteAlert(
   });
 
   if (result.isConfirmed) {
-    try {
-      await deleteFunction(id);
+    // Call the delete function and check if it succeeded
+    const isDeleted = await deleteFunction(id);
 
-      // Optional success message
+    if (isDeleted) {
+      // Success message
       await Swal.fire({
         title: 'Deleted!',
         text: `Your ${entityName} has been deleted.`,
@@ -53,19 +52,20 @@ export async function DeleteAlert(
         timer: 2000,
         showConfirmButton: false,
       });
-
       return true;
-    } catch (error) {
-      // Optional error handling
+    } else {
+      // Failed - likely due to association
       await Swal.fire({
-        title: 'Error!',
-        text: `Failed to delete ${entityName}. Please try again.`,
+        title: 'Can not Delete!',
+        text: `This ${entityName} is associated with other records and cannot be deleted.`,
         icon: 'error',
+        timer: 3000,
+        showConfirmButton: false,
       });
-
       return false;
     }
   }
 
+  // User cancelled
   return false;
 }

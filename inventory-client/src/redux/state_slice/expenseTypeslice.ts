@@ -1,13 +1,26 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-
+export interface IExpenseType {
+  _id?: string;
+  name: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+interface InputChangePayload {
+  name: keyof IExpenseType;
+  value: string | number;
+}
 interface TypeState {
   List: any[] | null;
   ListTotal: number;
+  FormValue: IExpenseType;
 }
 
 const initialState: TypeState = {
   List: [],
   ListTotal: 0,
+  FormValue: {
+    name: ""
+  }
 };
 
 export const brandSlice = createSlice({
@@ -20,8 +33,25 @@ export const brandSlice = createSlice({
     SetExpenseTypeListTotal: (state, action: PayloadAction<number>) => {
       state.ListTotal = action.payload;
     },
+    OnChangeExpenseTypeInput: (
+      state,
+      action: PayloadAction<InputChangePayload>,
+    ) => {
+      const { name, value } = action.payload;
+      (state.FormValue as any)[name] = value;
+    },
+    ResetExpenseTypeFormValue: state => {
+      state.FormValue = {
+        name: ""
+      };
+    },
   },
 });
 
-export const { SetExpenseTypeList, SetExpenseTypeListTotal } = brandSlice.actions;
+export const {
+  SetExpenseTypeList,
+  SetExpenseTypeListTotal,
+  OnChangeExpenseTypeInput,
+  ResetExpenseTypeFormValue,
+} = brandSlice.actions;
 export default brandSlice.reducer;

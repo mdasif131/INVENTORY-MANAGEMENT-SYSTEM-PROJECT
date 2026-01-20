@@ -2,10 +2,11 @@
 // expensTypeList Using the reusable component
 import { useSelector } from 'react-redux';
 
-import { GetExpensesTypeListRequest } from '../../APIRequest/ExpenseTypeAPIRequest';
+import { DeleteExpenseTypeRequest, GetExpensesTypeListRequest } from '../../APIRequest/ExpenseTypeAPIRequest';
 import { formatDate } from '../../helper/dateFormat';
 import type { RootState } from '../../redux/store/store';
 import DataTable from '../common/DataTable';
+import { DeleteAlert } from '../../helper/deleteAlert';
 
 const ExpenseTypeList = () => {
   const allexpensType = useSelector(
@@ -38,12 +39,21 @@ const ExpenseTypeList = () => {
     },
   ];
 
-  const handleEdit = (expensType: any) => {
-    console.log('Edit expensType:', expensType);
-  };
+  // const handleEdit = (expensType: any) => {
+  //   console.log('Edit expensType:', expensType);
+  // };
 
-  const handleDelete = (expensType: any) => {
-    console.log('Delete expensType:', expensType);
+  const handleDelete =async (expensType: any) => {
+     const id = expensType._id;
+        const result = await DeleteAlert(id, DeleteExpenseTypeRequest, {
+          entityName: 'Expense Type',
+          title: 'Delete Expense Type?',
+          confirmButtonText: 'Yes, delete expense type!',
+        });
+    
+        if (result) {
+          await GetExpensesTypeListRequest(1, 20, '0');
+        }
   };
 
   return (
@@ -53,7 +63,7 @@ const ExpenseTypeList = () => {
       data={allexpensType}
       total={expensTypeTotal}
       onFetchData={GetExpensesTypeListRequest}
-      onEdit={handleEdit}
+      updateURL="/expensetype-create-update"
       onDelete={handleDelete}
     />
   );
