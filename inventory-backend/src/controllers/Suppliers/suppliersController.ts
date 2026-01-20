@@ -61,7 +61,7 @@ export const deleteSupplier = async (
   if (checkAssociate) {
     res
       .status(409)
-      .json({ status: 'Associate', data: 'Associate with Purchase' });
+      .json({ status: 'Associate', message: 'Associate with Purchase' });
     return;
   }
 

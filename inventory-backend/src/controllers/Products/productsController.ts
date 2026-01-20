@@ -82,17 +82,17 @@ export const deleteProduct = async (
   if (checkSalesAssociate) {
     res
       .status(409)
-      .json({ status: 'Associate', data: 'Associate with Sales' });
+      .json({ status: 'Associate', message: 'Associate with Sales' });
     return;
   } else if (checkPurchaseAssociate) {
     res
       .status(409)
-      .json({ status: 'Associate', data: 'Associate with Purchase' });
+      .json({ status: 'Associate', message: 'Associate with Purchase' });
     return;
   } else if (checkReturnAssociate) {
     res
       .status(409)
-      .json({ status: 'Associate', data: 'Associate with Return' });
+      .json({ status: 'Associate', message: 'Associate with Return' });
     return;
   } else {
     const result = await deleteService(req as AuthRequest, ProductModel);

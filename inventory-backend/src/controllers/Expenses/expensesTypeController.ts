@@ -57,7 +57,7 @@ export const deleteExpenseType = async (
   if (checkAssociate) {
     res
       .status(409)
-      .json({ status: 'Associate', data: 'Associate with Expenses' });
+      .json({ status: 'Associate', message: 'Associate with Expenses' });
     return;
   }
 

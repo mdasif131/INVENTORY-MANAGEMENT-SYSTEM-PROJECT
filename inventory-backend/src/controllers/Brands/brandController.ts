@@ -53,7 +53,7 @@ export const deleteBrand = async (
   if (checkAssociate) {
     res
       .status(409)
-      .json({ status: 'Associate', data: 'Associate with Product' });
+      .json({ status: 'Associate', message: 'Associate with Product' });
     return
   }
 
