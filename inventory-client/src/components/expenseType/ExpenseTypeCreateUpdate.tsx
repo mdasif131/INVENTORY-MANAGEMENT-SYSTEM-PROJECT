@@ -42,7 +42,7 @@ const ExpenseTypeCreateUpdate = () => {
     <div className="flex items-center justify-center py-10 md:px-10">
       <div className="bg-white px-6 py-6 w-full lg:w-[70%] border rounded-xl shadow-xl">
         <h1 className="text-2xl font-semibold text-blue-500 py-5">
-          Save Expense Type
+           {`${objectId ? 'Update' : 'Create'} Expense Type`}
         </h1>
         <form className="md:grid grid-cols-12 gap-4 w-full space-y-4 text-slate-700 items-center justify-end">
           <div className="flex  flex-col col-span-6">
@@ -66,7 +66,11 @@ const ExpenseTypeCreateUpdate = () => {
             />
           </div>
           <div className="flex flex-col col-span-4 mt-4">
-            <Button onClick={saveChangeHandle} variant={'skybtn'} className="py-5">
+            <Button
+              onClick={saveChangeHandle}
+              variant={'skybtn'}
+              className="py-5"
+            >
               Save Change
             </Button>
           </div>

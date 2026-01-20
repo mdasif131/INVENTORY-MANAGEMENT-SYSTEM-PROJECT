@@ -53,11 +53,13 @@ const ExpenseCreateUpdate = () => {
     <div className="flex items-center justify-center py-10 md:px-10">
       <div className="bg-white px-6 py-6 w-full lg:w-[70%] border rounded-xl shadow-xl">
         <h1 className="text-2xl font-semibold text-blue-500 py-5">
-          Save Expense
+          {`${objectId ? 'Update' : 'Create'} Expense`}
         </h1>
         <form className="md:grid grid-cols-12 gap-4 w-full space-y-4 text-slate-700">
           <div className="flex flex-col col-span-4 ">
-            <label htmlFor='as' className="font-semibold mb-2">Expense Type</label>
+            <label htmlFor="as" className="font-semibold mb-2">
+              Expense Type
+            </label>
             <select
               value={FormValue.typeID}
               onChange={e => {
@@ -81,7 +83,9 @@ const ExpenseCreateUpdate = () => {
             </select>
           </div>
           <div className="flex flex-col col-span-4">
-            <label htmlFor='number' className=" font-semibold mb-2">Amount</label>
+            <label htmlFor="number" className=" font-semibold mb-2">
+              Amount
+            </label>
             <Input
               onChange={e => {
                 store.dispatch(
@@ -99,7 +103,9 @@ const ExpenseCreateUpdate = () => {
             />
           </div>
           <div className="flex flex-col col-span-4">
-            <label htmlFor='text' className=" font-semibold mb-2">Expense Note</label>
+            <label htmlFor="text" className=" font-semibold mb-2">
+              Expense Note
+            </label>
             <Input
               onChange={e => {
                 store.dispatch(

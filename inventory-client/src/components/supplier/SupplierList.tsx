@@ -1,9 +1,10 @@
 
 import { useSelector } from 'react-redux';
-import { GetSupplierListRequest } from '../../APIRequest/SupplierAPIRequest';
+import { DeleteSupplierRequest, GetSupplierListRequest } from '../../APIRequest/SupplierAPIRequest';
 import { formatDate } from '../../helper/dateFormat';
 import type { RootState } from '../../redux/store/store';
 import DataTable from '../common/DataTable';
+import { DeleteAlert } from '../../helper/deleteAlert';
 
 const SupplierList = () => {
   const allsupplier = useSelector((state: RootState) => state.supplier.List);
@@ -55,12 +56,21 @@ const SupplierList = () => {
     },
   ];
 
-  const handleEdit = (supplier: any) => {
-    console.log('Edit supplier:', supplier);
-  };
+  // const handleEdit = (supplier: any) => {
+  //   console.log('Edit supplier:', supplier);
+  // };
 
-  const handleDelete = (supplier: any) => {
-    console.log('Delete supplier:', supplier);
+  const handleDelete = async(supplier: any) => {
+   const id = supplier._id;
+     const result = await DeleteAlert(id, DeleteSupplierRequest, {
+       entityName: 'Supplier',
+       title: 'Delete Supplier?',
+       confirmButtonText: 'Yes, delete Supplier!',
+     });
+   
+     if (result) {
+       await GetSupplierListRequest(1, 20, '0');
+     }
   };
 
   return (
@@ -70,7 +80,7 @@ const SupplierList = () => {
       data={allsupplier}
       total={supplierTotal}
       onFetchData={GetSupplierListRequest}
-      onEdit={handleEdit}
+      updateURL="/supplier-create-update"
       onDelete={handleDelete}
       initialPerPage={20} // Custom initial per page
     />

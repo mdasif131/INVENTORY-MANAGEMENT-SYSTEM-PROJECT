@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 import { formatDate } from '../../helper/dateFormat';
 import type { RootState } from '../../redux/store/store';
 import DataTable from '../common/DataTable';
-import { GetCategoryListRequest } from '../../APIRequest/CategoryAPIRequest';
+import { DeleteCategoryRequest, GetCategoryListRequest } from '../../APIRequest/CategoryAPIRequest';
+import { DeleteAlert } from '../../helper/deleteAlert';
 
 const CategoryList = () => {
   const allCategory = useSelector((state: RootState) => state.category.List);
@@ -39,12 +40,21 @@ const CategoryList = () => {
     },
   ];
 
-  const handleEdit = (category: any) => {
-    console.log('Edit category:', category);
-  };
+  // const handleEdit = (category: any) => {
+  //   console.log('Edit category:', category);
+  // };
 
-  const handleDelete = (category: any) => {
-    console.log('Delete category:', category);
+  const handleDelete =async (category: any) => {
+     const id = category._id;
+        const result = await DeleteAlert(id, DeleteCategoryRequest, {
+          entityName: 'Category',
+          title: 'Delete Category?',
+          confirmButtonText: 'Yes, delete Category!',
+        });
+    
+        if (result) {
+          await GetCategoryListRequest(1, 20, '0');
+        }
   };
 
   return (
@@ -54,7 +64,7 @@ const CategoryList = () => {
       data={allCategory}
       total={categoryTotal}
       onFetchData={GetCategoryListRequest}
-      onEdit={handleEdit}
+      updateURL="/category-create-update"
       onDelete={handleDelete}
     />
   );

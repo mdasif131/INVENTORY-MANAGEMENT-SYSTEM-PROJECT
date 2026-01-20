@@ -3,11 +3,11 @@ import { formatDate } from '../../helper/dateFormat';
 import type { RootState } from '../../redux/store/store';
 import DataTable from '../common/DataTable';
 import { DeleteCustomerRequest, GetCustomerListRequest } from '../../APIRequest/CustomerAPIRequest';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 import { DeleteAlert } from '../../helper/deleteAlert';
 
 const CustomerList = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const allCustomer = useSelector((state: RootState) => state.customer.List);
   const customerTotal = useSelector(
     (state: RootState) => state.customer.ListTotal,

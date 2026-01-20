@@ -7,7 +7,7 @@ export interface IExpenseType {
 }
 interface InputChangePayload {
   name: keyof IExpenseType;
-  value: string | number;
+  value: string ;
 }
 interface TypeState {
   List: any[] | null;

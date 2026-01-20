@@ -2,10 +2,11 @@
 // 1. BrandList.tsx - Using the reusable component
 // ============================================
 import { useSelector } from 'react-redux';
-import { GetBrandListRequest } from '../../APIRequest/BrandAPIrequest';
+import { DeleteBrandRequest, GetBrandListRequest } from '../../APIRequest/BrandAPIrequest';
 import { formatDate } from '../../helper/dateFormat';
 import type { RootState } from '../../redux/store/store';
 import DataTable from '../common/DataTable';
+import { DeleteAlert } from '../../helper/deleteAlert';
 
 const BrandList = () => {
   const allBrand = useSelector((state: RootState) => state.brand.List);
@@ -39,14 +40,22 @@ const BrandList = () => {
     },
   ];
 
-  const handleEdit = (brand: any) => {
-    console.log('Edit brand:', brand);
-    // Add your edit logic here
-  };
+  // const handleEdit = (brand: any) => {
+  //   console.log('Edit brand:', brand);
+  //   // Add your edit logic here
+  // };
 
-  const handleDelete = (brand: any) => {
-    console.log('Delete brand:', brand);
-    // Add your delete logic here
+  const handleDelete =async (brand: any) => {
+    const id = brand._id;
+    const result = await DeleteAlert(id, DeleteBrandRequest, {
+      entityName: 'Brand',
+      title: 'Delete Brand?',
+      confirmButtonText: 'Yes, delete Brand!',
+    });
+
+    if (result) {
+      await GetBrandListRequest(1, 20, '0');
+    }
   };
 
   return (
@@ -55,8 +64,9 @@ const BrandList = () => {
       columns={columns}
       data={allBrand}
       total={brandTotal}
+      initialPerPage={10}
       onFetchData={GetBrandListRequest}
-      onEdit={handleEdit}
+      updateURL="/brand-create-update"
       onDelete={handleDelete}
     />
   );

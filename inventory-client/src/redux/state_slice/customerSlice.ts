@@ -11,7 +11,7 @@ export interface ICustomer {
   updatedAt?: string;
 }
 interface InputChangePayload {
-  Name: keyof ICustomer; // This ensures Name is a valid key of ICustomer
+  Name: keyof ICustomer; 
   value: string;
 }
 interface TypeState {

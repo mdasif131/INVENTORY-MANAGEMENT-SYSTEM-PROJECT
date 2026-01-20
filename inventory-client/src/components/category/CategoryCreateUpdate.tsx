@@ -1,8 +1,82 @@
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { CreateUpdateCategoryRequest, FillCategoryFormRequest } from '../../APIRequest/CategoryAPIRequest';
+import { ErrorToast, IsEmpty } from '../../helper/formHelper';
+import { OnChangeCategoryInput } from '../../redux/state_slice/categorySlice';
+import { store, type RootState } from '../../redux/store/store';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
 
 const CategoryCreateUpdate = () => {
-  return (
-    <div>CategoryCreateUpdate</div>
-  )
-}
+  const navigate = useNavigate();
+  const [objectId, setObjectId] = useState<string | null>(null);
+  const FormValue = useSelector((state: RootState) => state.category.FormValue);
 
-export default CategoryCreateUpdate
+  useEffect(() => {
+    let params = new URLSearchParams(window.location.search);
+    let id = params.get('id');
+    if (id !== null) {
+      setObjectId(id);
+      (async () => {
+        await FillCategoryFormRequest(id);
+      })();
+    }
+  }, []);
+
+  const saveChangeHandle = async (
+    e: React.MouseEvent<HTMLButtonElement>,
+  ): Promise<void> => {
+    e.preventDefault();
+    if (IsEmpty(FormValue.name as string)) {
+      ErrorToast('Category Name Required');
+    } else {
+      const result = await CreateUpdateCategoryRequest(FormValue, objectId);
+      if (result) {
+        navigate('/category-list');
+      }
+    }
+  };
+  return (
+    <div className="flex items-center justify-center py-10 md:px-10">
+      <div className="bg-white px-6 py-6 w-full lg:w-[70%] border rounded-xl shadow-xl">
+        <h1 className="text-2xl font-semibold text-blue-500 py-5">
+          {`${objectId ? 'Update' : 'Create'} Category`}
+        </h1>
+        <form className="md:grid grid-cols-12 gap-4 w-full space-y-4 text-slate-700 items-center justify-end">
+          <div className="flex  flex-col col-span-6">
+            <label htmlFor="text" className=" font-semibold mb-2">
+              Category Name
+            </label>
+            <Input
+              onChange={e => {
+                store.dispatch(
+                  OnChangeCategoryInput({
+                    name: 'name',
+                    value: e.target.value,
+                  }),
+                );
+              }}
+              defaultValue={FormValue.name ?? ''}
+              id="text"
+              type="text"
+              placeholder="Type brand name"
+              className="focus-visible:ring-blue-500 "
+            />
+          </div>
+          <div className="flex flex-col col-span-4 mt-4">
+            <Button
+              onClick={saveChangeHandle}
+              variant={'skybtn'}
+              className="py-5"
+            >
+              Save Change
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default CategoryCreateUpdate;
