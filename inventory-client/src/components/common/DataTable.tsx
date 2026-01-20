@@ -111,8 +111,8 @@ const DataTable: React.FC<DataTableProps> = ({
   };
 
   return (
-    <div className="px-4 py-8 sm:px-6 lg:px-8">
-      <div className="max-w-full mx-auto">
+    <div className="px-4 py-8 sm:px-6 lg:px-8 w-full ">
+      <div className="max-w-full mx-auto ">
         <div className="bg-white rounded-lg shadow-2xl flex flex-col">
           <div className="flex flex-col sm:flex-row gap-4 p-6 border-b border-gray-200">
             <div className="flex-1">

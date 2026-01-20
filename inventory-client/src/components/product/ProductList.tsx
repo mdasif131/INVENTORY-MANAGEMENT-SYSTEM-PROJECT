@@ -1,9 +1,9 @@
-
 import { useSelector } from 'react-redux';
-import { GetProductListRequest } from '../../APIRequest/ProductAPIRequest';
+import { DeleteProductRequest, GetProductListRequest } from '../../APIRequest/ProductAPIRequest';
 import { formatDate } from '../../helper/dateFormat';
 import type { RootState } from '../../redux/store/store';
 import DataTable from '../common/DataTable';
+import { DeleteAlert } from '../../helper/deleteAlert';
 
 const ProductList = () => {
   const allproduct = useSelector((state: RootState) => state.product.List);
@@ -48,6 +48,16 @@ const ProductList = () => {
       ),
     },
     {
+      key: 'details',
+      label: 'DETAILS',
+      hidden: 'lg' as const,
+      render: (product: any) => (
+        <span className="text-gray-600">
+          {`${product.details.substring(0, 50)}...` || 'N/A'}
+        </span>
+      ),
+    },
+    {
       key: 'createdAt',
       label: 'CREATED',
       hidden: 'sm' as const,
@@ -57,12 +67,21 @@ const ProductList = () => {
     },
   ];
 
-  const handleEdit = (product: any) => {
-    console.log('Edit product:', product);
-  };
+  // const handleEdit = (product: any) => {
+  //   console.log('Edit product:', product);
+  // };
 
-  const handleDelete = (product: any) => {
-    console.log('Delete product:', product);
+  const handleDelete = async (product: any) => {
+    const id = product._id;
+    const result = await DeleteAlert(id, DeleteProductRequest, {
+      entityName: 'Product',
+      title: 'Delete Product?',
+      confirmButtonText: 'Yes, delete product!',
+    });
+
+    if (result) {
+      await GetProductListRequest(1, 20, '0');
+    }
   };
 
   return (
@@ -72,7 +91,7 @@ const ProductList = () => {
       data={allproduct}
       total={productTotal}
       onFetchData={GetProductListRequest}
-      onEdit={handleEdit}
+      updateURL={'/product-create-update'}
       onDelete={handleDelete}
       initialPerPage={20} // Custom initial per page
     />

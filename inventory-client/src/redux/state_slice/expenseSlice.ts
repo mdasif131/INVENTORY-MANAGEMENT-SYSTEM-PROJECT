@@ -15,10 +15,10 @@ export interface IExpense {
 }
 
 interface ExpenseState {
-  List: any[] | null;
+  List: IExpense[] | null;
   ListTotal: number;
   FormValue: IExpense;
-  ExpenseTypeDropDown: any[] | null
+  ExpenseTypeDropDown: any[] | null;
 }
 
 const initialState: ExpenseState = {
@@ -36,16 +36,15 @@ export const expenseSlice = createSlice({
   name: 'expense',
   initialState,
   reducers: {
-    SetExpenseList: (state, action: PayloadAction<any[]>) => {
+    SetExpenseList: (state, action: PayloadAction<IExpense[]>) => {
       state.List = action.payload;
     },
     SetExpenseListTotal: (state, action: PayloadAction<number>) => {
       state.ListTotal = action.payload;
     },
     SetExpenseTypeDropDown: (state, action) => {
-      state.ExpenseTypeDropDown = action.payload
-    }
-    ,
+      state.ExpenseTypeDropDown = action.payload;
+    },
     OnChangeExpenseInput: (
       state,
       action: PayloadAction<InputChangePayload>,
