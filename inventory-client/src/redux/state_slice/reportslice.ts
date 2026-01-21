@@ -1,27 +1,43 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 interface TypeState {
-  List: any[] | null;
-  ListTotal: number;
+  SalesByDateList: any[] | null;
+  ExpenseByDateList: any[] | null;
+  PurchaseByDateList: any[] | null;
+  ReturnByDateList: any[] | null;
 }
 
 const initialState: TypeState = {
-  List: [],
-  ListTotal: 0,
+  SalesByDateList: [],
+  ExpenseByDateList: [],
+  PurchaseByDateList: [],
+  ReturnByDateList: [],
+  
 };
 
-export const brandSlice = createSlice({
+export const reportSlice = createSlice({
   name: 'report',
   initialState,
   reducers: {
-    SetReportList: (state, action: PayloadAction<any[]>) => {
-      state.List = action.payload;
+    SetExpenseByDateList: (state, action: PayloadAction<any[]>) => {
+      state.ExpenseByDateList = action.payload;
     },
-    SetReportListTotal: (state, action: PayloadAction<number>) => {
-      state.ListTotal = action.payload;
+    SetSalesByDateListTotal: (state, action: PayloadAction<any[]>) => {
+      state.SalesByDateList = action.payload;
+    },
+    SetPurchaseByDateListTotal: (state, action: PayloadAction<any[]>) => {
+      state.PurchaseByDateList = action.payload;
+    },
+    SetReturnByDateListTotal: (state, action: PayloadAction<any[]>) => {
+      state.ReturnByDateList = action.payload;
     },
   },
 });
 
-export const { SetReportList, SetReportListTotal } = brandSlice.actions;
-export default brandSlice.reducer;
+export const {
+  SetSalesByDateListTotal,
+  SetExpenseByDateList,
+  SetPurchaseByDateListTotal,
+  SetReturnByDateListTotal,
+} = reportSlice.actions;
+export default reportSlice.reducer;

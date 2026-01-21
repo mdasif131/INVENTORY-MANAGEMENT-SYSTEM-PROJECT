@@ -27,6 +27,8 @@
     "clsx": "^2.1.1",
     "export-from-json": "^1.7.4",
     "input-otp": "^1.4.2",
+    "jspdf": "^4.0.0",
+    "jspdf-autotable": "^5.0.7",
     "lucide-react": "^0.562.0",
     "moment": "^2.30.1",
     "motion": "^12.23.26",

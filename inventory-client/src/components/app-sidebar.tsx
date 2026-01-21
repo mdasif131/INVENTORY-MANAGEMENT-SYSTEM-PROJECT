@@ -31,7 +31,7 @@ const data = {
     avatar: '/avatars/shadcn.jpg',
   },
 
-  teams: [{ name: 'MD ASIF', logo:Codesandbox, plan: 'Enterprise' }],
+  teams: [{ name: 'MD ASIF', logo: Codesandbox, plan: 'Enterprise' }],
 
   navMain: [
     {
@@ -51,7 +51,7 @@ const data = {
     },
     {
       title: 'Supplier',
-      url: '#',
+      url: '/supplier-list',
       icon: TruckElectric,
       items: [
         { title: 'New Suplier', url: '/supplier-create-update' },
@@ -60,7 +60,7 @@ const data = {
     },
     {
       title: 'Expense',
-      url: '#',
+      url: '/expense-list',
       icon: Landmark,
       items: [
         { title: 'New Expense Type', url: '/expensetype-create-update' },
@@ -71,7 +71,7 @@ const data = {
     },
     {
       title: 'Product',
-      url: '#',
+      url: '/product-list',
       icon: PackageSearch,
       items: [
         { title: 'New Brand', url: '/brand-create-update' },
@@ -84,7 +84,7 @@ const data = {
     },
     {
       title: 'Purchase',
-      url: '#',
+      url: '/purchase-list',
       icon: ShoppingBag,
       items: [
         { title: 'New Purchase', url: '/purchase-create-update' },
@@ -93,7 +93,7 @@ const data = {
     },
     {
       title: 'Sale',
-      url: '#',
+      url: '/sales-list',
       icon: ShoppingCart,
       items: [
         { title: 'New Sale', url: '/sales-create-update' },
@@ -102,7 +102,7 @@ const data = {
     },
     {
       title: 'Return',
-      url: '#',
+      url: '/retrun-list',
       icon: Tags,
       items: [
         { title: 'New Return', url: '/retrun-create-update' },
@@ -111,38 +111,31 @@ const data = {
     },
     {
       title: 'Report',
-      url: '#',
+      url: '/expense-report',
       icon: ChartNoAxesCombined,
       items: [
-        { title: 'Sale Report', url: '#' },
-        { title: 'Return Report', url: '#' },
-        { title: 'Purchase Report', url: '#' },
-        { title: 'Expense Report', url: '#' },
+        { title: 'Expense Report', url: '/expense-report' },
+        { title: 'Purchase Report', url: '/purchase-report' },
+        { title: 'Sale Report', url: '/Sale-report' },
+        { title: 'Return Report', url: '/retrun-report' },
       ],
-    },
-  ],
-
-  projects: [
-    {
-      name: 'Dashboard',
-      url: '/dashboard',
-      icon: LayoutDashboard,
-      isActive: true,
     },
   ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
-      </SidebarHeader>
-      <SidebarContent className='mt-2'>
-        <NavMain items={data.navMain} />
-      </SidebarContent>
-      {/* <SidebarFooter><NavUser user={data.user} /></SidebarFooter> */}
-      <SidebarRail />
-    </Sidebar>
+    <>
+      <Sidebar collapsible="icon" {...props}>
+        <SidebarHeader>
+          <TeamSwitcher teams={data.teams} />
+        </SidebarHeader>
+        <SidebarContent className="mt-2">
+          <NavMain items={data.navMain} />
+        </SidebarContent>
+        {/* <SidebarFooter><NavUser user={data.user} /></SidebarFooter> */}
+        <SidebarRail />
+      </Sidebar>
+    </>
   );
 }

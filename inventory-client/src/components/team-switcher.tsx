@@ -29,7 +29,7 @@ export function TeamSwitcher({
   }
 
   return (
-    <SidebarMenu className="relative pb-4">
+    <SidebarMenu className="relative pb-4 ">
       <div className="w-full absolute bg-blue-600 bottom-0 right-0 h-px"></div>
       <SidebarMenuItem>
         <DropdownMenu>

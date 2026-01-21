@@ -29,6 +29,10 @@ import PurchaseCreateUpdatePage from './pages/PurchasePage/PurchaseCreateUpdateP
 import ProductCreateUpdatePage from './pages/ProductPage/ProductCreateUpdatePage';
 import ExpenseTypeCreateUpdatePage from './pages/ExpensesPage/ExpenseTypeCreateUpdatePage';
 import CustomerCreateUpdatePage from './pages/CustomerPage/CustomerCreateUpdatePage';
+import ExpenseReportPage from './pages/ReportPage/ExpenseReportPage';
+import PurchaseReportPage from './pages/ReportPage/PurchaseReportPage';
+import ReturnReportPage from './pages/ReportPage/ReturnReportPage';
+import SaleReportPage from './pages/ReportPage/SaleReportPage';
 
 const App = () => {
   return (
@@ -66,7 +70,13 @@ const App = () => {
             <Route path="/sales-list" element={<SalesListPage />} />
             <Route path="/sales-create-update" element={<SalesCreateUpdatePage />} />
             <Route path="/supplier-list" element={<SupplierListPage />} />
-            <Route path="/supplier-create-update" element={<SupplierCreateUpdatePage />}/>
+            <Route path="/supplier-create-update" element={<SupplierCreateUpdatePage />} />
+            //report 
+            <Route path="/expense-report" element={<ExpenseReportPage />} />
+            <Route path="/purchase-report" element={<PurchaseReportPage />} />
+            <Route path="/retrun-report" element={<ReturnReportPage />} />
+            <Route path="/Sale-report" element={<SaleReportPage />} />
+
           </Route>
 
           {/* Catch-all 404 - MOVED TO THE END */}
