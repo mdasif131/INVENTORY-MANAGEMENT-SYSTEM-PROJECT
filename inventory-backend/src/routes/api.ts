@@ -7,7 +7,7 @@ import { createCustomer, customerDetailsById, customerDropDown, CustomerList, de
 import { createSupplier, deleteSupplier, supplierDetailsById, supplierDropDown, supplierList, updateSupplier } from '../controllers/Suppliers/suppliersController';
 import { createExpensetypes, deleteExpenseType, expenseTypeDetailsById, ExpensetypesDropDown, expensetypesList, updateExpensetypes } from '../controllers/Expenses/expensesTypeController';
 import { createExpense, deleteExpense, expenseDetailsById, expensesList, updateExpense } from '../controllers/Expenses/expensesController';
-import { createProduct, deleteProduct, productList, productsDetailsById, updateProduct } from '../controllers/Products/productsController';
+import { createProduct, deleteProduct, productDropDown, productList, productsDetailsById, updateProduct } from '../controllers/Products/productsController';
 import { createPurchases, purchaseDelete, purchasesList } from '../controllers/Purchases/purchasesController';
 import { createSales, salesDelete, SalesList } from '../controllers/Sells/salesController';
 import { createReturn, returnDelete, returnList } from '../controllers/Returns/returnsControllers';
@@ -84,6 +84,7 @@ router.put('/update-product/:id', authenticate, updateProduct);
 router.get("/product-list/:pageNo/:perPage/:searchKeyword", authenticate, productList)
 router.delete('/delete-product/:id', authenticate, deleteProduct);
 router.get('/products-details-by-id/:id', authenticate, productsDetailsById);
+router.get('/productDropDown', authenticate, productDropDown);
 
 // Purchases
 router.post('/create-purchases', authenticate, createPurchases);

@@ -11,6 +11,7 @@ import SellProductModel from '../../models/Sell/sellProductModel';
 import PurchaseProductModel from '../../models/Purchases/purchaseProductsModel';
 import ReturnProductModel from '../../models/Returns/returnProduct';
 import { detailsByIDService } from '../../services/common/detailsByIDService';
+import { dropDownService } from '../../services/common/dropDownService';
 
 export const createProduct = async (req: Request, res: Response) => {
   const result = await createService(req as AuthRequest, ProductModel);
@@ -25,7 +26,13 @@ export const productsDetailsById = async (req: Request, res: Response) => {
   const result = await detailsByIDService(req as AuthRequest, ProductModel);
   return res.status(200).json(result);
 };
-
+export const productDropDown = async (req: Request, res: Response) => {
+  const result = await dropDownService(req as AuthRequest, ProductModel, {
+    _id: 1,
+    name: 1,
+  });
+  return res.status(200).json(result);
+};
 export const productList = async (req: Request, res: Response) => {
   const SearchRgx = { $regex: req.params.searchKeyword, $options: 'i' };
   const SearchArray = [
