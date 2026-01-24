@@ -40,7 +40,6 @@ export async function PurchaseByDateRequest(FormDate: string, ToDate: string){
     toDate: ToDate ,
   };
 
-  // +'T00:00:00:000+00:00';
   let URL: string = `${BaseURL}/purchases-by-date`;
 
   try {

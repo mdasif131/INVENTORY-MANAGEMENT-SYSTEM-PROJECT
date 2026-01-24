@@ -196,7 +196,7 @@ const ExpenseReport = () => {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <Button onClick={() => OnExport('csv', rows)} variant={'skybtn'}>
+            <Button   onClick={() => OnExport('csv', rows)} variant={'skybtn'}>
               Download CSV
             </Button>
             <Button onClick={() => OnExport('xls', rows)} variant={'skybtn'}>
@@ -210,7 +210,7 @@ const ExpenseReport = () => {
             </Button>
           </div>
 
-          <div className="mt-6 overflow-x-auto">
+          <div className="mt-6 overflow-x-auto max-sm:hidden">
             <h3 className="text-lg font-semibold mb-3">Expense Details</h3>
             <table className="min-w-full border-collapse border border-gray-300">
               <thead>
