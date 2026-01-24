@@ -1,14 +1,20 @@
 import axios from 'axios';
 import { AxiosHeader, BaseURL } from '../helper/config';
 import { ErrorToast, SuccessToast } from '../helper/formHelper';
-import { SetSaleList, SetSaleListTotal } from '../redux/state_slice/saleSlice';
+import {
+  SetCustomerDropDown,
+  SetProductDropDown,
+  SetSaleList,
+  SetSaleListTotal,
+  type ISaleFormValue,
+} from '../redux/state_slice/saleSlice';
 import { HideLoader, ShowLoader } from '../redux/state_slice/settingsSlice';
 import { store } from '../redux/store/store';
 
 export async function GetSaleListRequest(
   pageNo: string | number,
   perPage: string | number,
-  SearchKeyword: string
+  SearchKeyword: string,
 ): Promise<boolean> {
   store.dispatch(ShowLoader());
   let URL: string = `${BaseURL}/sales-list/${pageNo}/${perPage}/${SearchKeyword}`;
@@ -34,6 +40,60 @@ export async function GetSaleListRequest(
       ErrorToast('Failed to fetch brand list');
       return false;
     }
+  } catch (error: any) {
+    ErrorToast(error?.response?.data?.message || 'Something went wrong');
+    return false;
+  } finally {
+    store.dispatch(HideLoader());
+  }
+}
+
+export async function CreateSaleRequest(
+  ParentBody: ISaleFormValue,
+  ChildBody: any[] | null,
+): Promise<boolean> {
+  store.dispatch(ShowLoader());
+  let URL: string = `${BaseURL}/create-sales`;
+  let PostBody = { parent: ParentBody, childs: ChildBody };
+  try {
+    const res = await axios.post(URL, PostBody, AxiosHeader);
+
+    if (res.status === 201 && res.data?.status === 'success') {
+      SuccessToast('Request successful');
+      return true;
+    } else {
+      ErrorToast('Failed to fetch brand list');
+      return false;
+    }
+  } catch (error: any) {
+    ErrorToast(error?.response?.data?.message || 'Something went wrong');
+    return false;
+  } finally {
+    store.dispatch(HideLoader());
+  }
+}
+
+export async function CustomerDropDownRequest(): Promise<boolean> {
+  store.dispatch(ShowLoader());
+  let URL: string = `${BaseURL}/customerDropDown`;
+  try {
+    const res = await axios.get(URL, AxiosHeader);
+    store.dispatch(SetCustomerDropDown(res.data?.data));
+    return true;
+  } catch (error: any) {
+    ErrorToast(error?.response?.data?.message || 'Something went wrong');
+    return false;
+  } finally {
+    store.dispatch(HideLoader());
+  }
+}
+export async function ProuductDropDownRequest(): Promise<boolean> {
+  store.dispatch(ShowLoader());
+  let URL: string = `${BaseURL}/productDropDown`;
+  try {
+    const res = await axios.get(URL, AxiosHeader);
+    store.dispatch(SetProductDropDown(res.data?.data));
+    return true;
   } catch (error: any) {
     ErrorToast(error?.response?.data?.message || 'Something went wrong');
     return false;

@@ -78,9 +78,6 @@ const SalesList = () => {
     console.log('Edit sale:', sale);
   };
 
-  const handleDelete = (sale: any) => {
-    console.log('Delete sale:', sale);
-  };
 
   return (
     <DataTable
@@ -90,7 +87,6 @@ const SalesList = () => {
       total={saleTotal}
       onFetchData={GetSaleListRequest}
       onEdit={handleEdit}
-      onDelete={handleDelete}
       initialPerPage={20} // Custom initial per page
     />
   );
