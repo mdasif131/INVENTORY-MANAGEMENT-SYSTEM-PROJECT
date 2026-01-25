@@ -28,7 +28,7 @@ export const salesSummaryService = async (
                 totalAmount: { $sum: '$grandTotal' },
               },
             },
-            { $sort: { _id: -1 } },
+            { $sort: { _id: 1 } },
             { $limit: 30 },
           ],
         },
