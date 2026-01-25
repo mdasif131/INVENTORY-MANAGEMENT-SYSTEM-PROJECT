@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
-import type { RootState } from "../../redux/store/store";
 import { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import { Area, AreaChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { ExpenseSummaryRequest, PurchaseSummaryRequest, ReturnSummaryRequest, SalesSummaryRequest } from "../../APIRequest/SummaryAPIRequest";
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area } from 'recharts'
+import type { RootState } from "../../redux/store/store";
 
 const Dashboard = () => {
   const hasLoadedDropdowns = useRef(false);
