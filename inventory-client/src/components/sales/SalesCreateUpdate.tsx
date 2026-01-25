@@ -1,6 +1,7 @@
 import { Trash2 } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import {
   CreateSaleRequest,
   CustomerDropDownRequest,
@@ -13,7 +14,7 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 
 const SalesCreateUpdate = () => {
-
+const navigate = useNavigate();
   const hasLoadedDropdowns = useRef(false);
   //Form Value
   const productRef = useRef<HTMLSelectElement>(null);
@@ -68,8 +69,8 @@ const SalesCreateUpdate = () => {
       await ProuductDropDownRequest();
     })();
   }, []);
-   const CreateNewSale = async () => {
-     // Validate Parent Data
+  const CreateNewSale = async (e: React.MouseEvent<HTMLButtonElement>) => {
+     e.preventDefault();
      if (IsEmpty(ParentData.customerID)) {
        ErrorToast('Please select a customer');
        return;
@@ -87,9 +88,12 @@ const SalesCreateUpdate = () => {
 
      // If all validations pass, create the sale
      let res = await CreateSaleRequest(ParentData, ChildData);
-     alert(res);
+    if (res) {
+       navigate("/sales-list")
+     }
    };
-  const OnAddCart = () => {
+  const OnAddCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+     e.preventDefault();
     let ProductValue = productRef.current?.value || '';
     let ProductName = productRef.current?.selectedOptions[0]?.text || '';
     let qtyValue = qtyRef.current?.value || ' ';
@@ -111,13 +115,14 @@ const SalesCreateUpdate = () => {
       store.dispatch(SetSaleItemList(item));
     }
   };
-  const removeCart = (i: any) => {
+  const removeCart = (  i: any) => {
     store.dispatch(RemoveSaleItem(i));
   };
   return (
     <section>
       <div className="md:grid grid-cols-12 grid-rows-12 w-full gap-4 space-y-4">
-        <form className="bg-white shadow-xl col-span-5 row-span-12 rounded-md p-4 space-y-4">
+        <div className="bg-white shadow-xl col-span-5 row-span-12 rounded-md px-4 space-y-4  py-8">
+          <h1 className='font-bold text-2xl text-blue-400'>Create Sales</h1>
           {/* Parent Input  */}
           <div className="flex flex-col">
             <label htmlFor="as" className="font-semibold ">
@@ -133,7 +138,6 @@ const SalesCreateUpdate = () => {
                   }),
                 );
               }}
-              
               className="w-full  px-3 py-2 border border-gray-300 rounded-md bg-white text-sm text-gray-700
                        focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-500 cursor-pointer"
             >
@@ -161,7 +165,6 @@ const SalesCreateUpdate = () => {
                 );
               }}
               value={ParentData.vatTax ?? ''}
-              
               id="number"
               type="number"
               placeholder="Enter Vat Tax"
@@ -173,7 +176,6 @@ const SalesCreateUpdate = () => {
               Discount
             </label>
             <Input
-              
               onChange={e => {
                 store.dispatch(
                   OnChangeSalesInput({
@@ -193,7 +195,7 @@ const SalesCreateUpdate = () => {
             <label htmlFor="otherCost" className="font-semibold ">
               Other Cost
             </label>
-            <Input           
+            <Input
               onChange={e => {
                 store.dispatch(
                   OnChangeSalesInput({
@@ -262,7 +264,15 @@ const SalesCreateUpdate = () => {
               className="focus-visible:ring-blue-500 hover:border-blue-500 cursor-pointer"
             />
           </div>
-        </form>
+          <Button
+            onClick={CreateNewSale}
+            variant={'skybtn'}
+            size={'lg'}
+            className="px-18"
+          >
+            Create
+          </Button>
+        </div>
         <div className="flex flex-col  gap-4 col-span-7 row-span-12">
           {/* Child Inupt  */}
           <div className="bg-white shadow-xl rounded-md p-4 md:grid grid-cols-12 gap-x-2 items-end space-y-3">
@@ -356,16 +366,7 @@ const SalesCreateUpdate = () => {
           </div>
         </div>
 
-        <div className="bg-white shadow-xl col-span-12 inline-flex items-center justify-end">
-          <Button
-            onClick={CreateNewSale}
-            variant={'skybtn'}
-            size={'lg'}
-            className="px-18"
-          >
-            Create
-          </Button>
-        </div>
+        <div className="col-span-12 inline-flex items-center justify-end"></div>
       </div>
     </section>
   );
