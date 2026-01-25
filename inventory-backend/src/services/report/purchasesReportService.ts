@@ -20,7 +20,10 @@ export const purchasesReportService = async (
         $facet: {
           Total: [
             {
-              $group: { _id: 0, totalAmount: { $sum: '$total' } },
+              $group: {
+                _id: 0,
+                totalAmount: { $sum: { $multiply: ['$qty', '$unitCost'] } },
+              },
             },
           ],
           Rows: [
