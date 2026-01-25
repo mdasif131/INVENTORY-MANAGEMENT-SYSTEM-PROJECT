@@ -13,6 +13,7 @@ import reportReducer from '../state_slice/reportslice';
 import returnReducer from '../state_slice/returnslice';
 import saleReducer from '../state_slice/saleSlice';
 import supplierReducer from '../state_slice/supplierSlice';
+import summaryReducer from '../state_slice/summarySlice'
 export const store = configureStore({
   reducer: {
     settings: settingsReducer,
@@ -29,6 +30,7 @@ export const store = configureStore({
     return: returnReducer,
     sale: saleReducer,
     supplier: supplierReducer,
+    summary: summaryReducer,
   },
 });
 
