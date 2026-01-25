@@ -28,13 +28,13 @@ export const expenseSummaryService = async (
                 totalAmount: { $sum: '$amount' },
               },
             },
-            { $sort: { _id: -1 } },
+            { $sort: { _id: 1 } },
             { $limit: 30 },
           ],
         },
       },
     ]);
-    res.status(200).json({status: 'success', data: data})
+    res.status(200).json({status: 'success', data: data.reverse()})
   } catch (error) {
     res
       .status(500)
