@@ -46,7 +46,7 @@ const PurchaseReport = () => {
       Product: item.products?.name,
       Brand: item.brands.name,
       Category: item.categories.name,
-      Amount: (item.total * item.qty) ,
+      Amount: (item.total) ,
     }));
 
     exportFromJSON({
@@ -92,7 +92,7 @@ const PurchaseReport = () => {
       item.products?.name ?? 'N/A',
       item.brands?.name || 'N/A',
       item.categories?.name || 'N/A',
-      `$${item.total * item.qty}`,
+      `$${item.total}`,
     ]);
 
     // Use autoTable - CORRECTED
@@ -240,7 +240,7 @@ const PurchaseReport = () => {
                       {item.categories?.name}
                     </td>
                     <td className="border border-gray-300 px-4 py-2 text-left ">
-                      { (item.total * item.qty)}
+                      { (item.total)}
                     </td>
                   </tr>
                 ))}
