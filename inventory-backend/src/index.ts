@@ -19,7 +19,13 @@ connectDB()
 // Security Middlewares 
 app.use(helmet())
 app.use(hpp());
-app.use(cors())
+app.use(
+  cors({
+    origin: 'https://inventory-management-system-asif.netlify.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  }),
+);
 app.use(cookieParser());
 
 // Body Parsers Middlewares 
